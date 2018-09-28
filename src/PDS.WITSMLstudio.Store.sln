@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+# Visual Studio 15
+VisualStudioVersion = 15.0.28010.2036
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Store", "Store\Store.csproj", "{9E51075C-D571-42F5-A311-0589231DBA9C}"
 EndProject
@@ -12,6 +12,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "External", "External", "{B0
 		External\GlobalAssemblyInfo.cs = External\GlobalAssemblyInfo.cs
 		..\LICENSE.txt = ..\LICENSE.txt
 		..\NOTICE.txt = ..\NOTICE.txt
+		External\PPDM39.DataContext.dll = External\PPDM39.DataContext.dll
 		..\README.md = ..\README.md
 		External\UpdatePackageHintPaths.ps1 = External\UpdatePackageHintPaths.ps1
 	EndProjectSection
@@ -41,6 +42,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Store.UserAdmin", "..\ext\witsml\src\Store.UserAdmin\Store.UserAdmin.csproj", "{347D0962-B422-4ACB-97AA-4BB78854A282}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Store.MongoDb", "..\ext\witsml\src\Store.MongoDb\Store.MongoDb.csproj", "{692D27D9-2F4C-44A6-8D71-8B291E0DC1A3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Store.PPDM", "Store.PPDM\Store.PPDM.csproj", "{C886085B-ACDA-4468-AD95-BDD98162C07A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -104,6 +107,10 @@ Global
 		{692D27D9-2F4C-44A6-8D71-8B291E0DC1A3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{692D27D9-2F4C-44A6-8D71-8B291E0DC1A3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{692D27D9-2F4C-44A6-8D71-8B291E0DC1A3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C886085B-ACDA-4468-AD95-BDD98162C07A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C886085B-ACDA-4468-AD95-BDD98162C07A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C886085B-ACDA-4468-AD95-BDD98162C07A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C886085B-ACDA-4468-AD95-BDD98162C07A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -120,5 +127,9 @@ Global
 		{C1FE065B-5750-4D15-84D8-77DF756C52D8} = {A5268269-F5F0-4B28-A9B5-A2A86D45C916}
 		{347D0962-B422-4ACB-97AA-4BB78854A282} = {A5268269-F5F0-4B28-A9B5-A2A86D45C916}
 		{692D27D9-2F4C-44A6-8D71-8B291E0DC1A3} = {A5268269-F5F0-4B28-A9B5-A2A86D45C916}
+		{C886085B-ACDA-4468-AD95-BDD98162C07A} = {A5268269-F5F0-4B28-A9B5-A2A86D45C916}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {D32DD8A1-441C-4FF8-A549-34708ABAF4B7}
 	EndGlobalSection
 EndGlobal

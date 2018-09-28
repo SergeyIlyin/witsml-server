@@ -245,6 +245,7 @@
     </Content>
     <None Include="Properties\PublishProfiles\pds-witsml-web.pubxml" />
     <None Include="Properties\PublishProfiles\pds-witsml.pubxml" />
+    <None Include="Properties\PublishProfiles\srvugeo07.pubxml" />
     <None Include="Properties\PublishProfiles\witsml-server.pubxml" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>

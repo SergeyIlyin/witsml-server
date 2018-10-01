@@ -30,6 +30,7 @@ using PDS.WITSMLstudio.Store.Data;
 using PDS.WITSMLstudio.Store.Jobs.Configuration;
 using PDS.WITSMLstudio.Store.Controllers;
 
+
 namespace PDS.WITSMLstudio.Store
 {
     public class WebApiApplication : System.Web.HttpApplication
@@ -48,11 +49,15 @@ namespace PDS.WITSMLstudio.Store
                 WitsmlSettings.OverrideServerVersion = typeof(EtpController).GetAssemblyVersion();
 
             var container = (IContainer)System.Web.Http.GlobalConfiguration.Configuration.DependencyResolver.GetService(typeof(IContainer));
-            var databaseProvider = container.Resolve<IDatabaseProvider>();
+
+ 
+            // var databaseProvider = container.Resolve<IDatabaseProvider>();
 
             // pre-init IWitsmlStore dependencies
             var store = container.Resolve<IWitsmlStore>();
             store.WMLS_GetCap(new WMLS_GetCapRequest(OptionsIn.DataVersion.Version141));
+
+           
 
             Task.Run(async () =>
             {
@@ -60,8 +65,8 @@ namespace PDS.WITSMLstudio.Store
                 await Task.Delay(WitsmlSettings.ChangeDetectionPeriod * 1000);
 
                 // Configure and register Hangfire jobs
-                Hangfire.GlobalConfiguration.Configuration.UseMongoStorage(databaseProvider.ConnectionString, databaseProvider.DatabaseName);
-                HangfireConfig.Register(container);
+                //Hangfire.GlobalConfiguration.Configuration.UseMongoStorage(databaseProvider.ConnectionString, databaseProvider.DatabaseName);
+                //HangfireConfig.Register(container);
             });
         }
 

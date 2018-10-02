@@ -2,11 +2,16 @@
 
   <PropertyGroup>
     <TargetFramework>net452</TargetFramework>
+    <AssemblyName>PDS.WITSMLstudio.Store.YarusDb</AssemblyName>
+    <RootNamespace>PDS.WITSMLstudio.Store</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="ETP.DevKit-PDS" Version="1.1.20180212.1" />
+    <PackageReference Include="ETP.DevKit" Version="1.2.0-dev16" />
+    <PackageReference Include="LinqToQuerystring" Version="0.7.0.8" />
     <PackageReference Include="Standards.DevKit-PDS" Version="2.0.20180429.2" />
+    <PackageReference Include="System.ComponentModel.Annotations" Version="4.5.0" />
+    <PackageReference Include="System.Net.Http" Version="4.3.3" />
   </ItemGroup>
 
   <ItemGroup>

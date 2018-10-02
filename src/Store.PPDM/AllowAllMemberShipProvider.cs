@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Web.Security;
 
-namespace Store.PPDM
+namespace PDS.WITSMLstudio.Store
 {
     public class AllowAllMemberShipProvider : MembershipProvider
     {

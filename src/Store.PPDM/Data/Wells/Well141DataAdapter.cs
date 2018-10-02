@@ -1,31 +1,38 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.Composition;
-using System.Linq;
-using Energistics.DataAccess.WITSML141;
-using Energistics.DataAccess.WITSML141.ComponentSchemas;
-
-
+﻿using Energistics.DataAccess.WITSML141;
 using PDS.WITSMLstudio.Framework;
 using PDS.WITSMLstudio.Store.Configuration;
-
+using System.ComponentModel.Composition;
+using System.Collections.Generic;
+using System.Linq;
+using Energistics.Etp.Common.Datatypes;
+using LinqToQuerystring;
+using YARUS.API;
 
 namespace PDS.WITSMLstudio.Store.Data.Wells
 {
-    [Export(typeof(PDS.WITSMLstudio.Store.Configuration.IWitsml131Configuration))]
+    [Export(typeof(IWitsml141Configuration))]
     [Export(typeof(IWitsmlDataAdapter<Well>))]
-    [Export131(ObjectTypes.Well, typeof(IWitsmlDataAdapter))]
+    [Export141(ObjectTypes.Well, typeof(IWitsmlDataAdapter))]
     [PartCreationPolicy(CreationPolicy.Shared)]
     public partial class Well141DataAdapter : WitsmlDataAdapter<Well>, PDS.WITSMLstudio.Store.Configuration.IWitsml141Configuration
     {
-      //  IModulesCollection modulesCollection;
+        //  IModulesCollection modulesCollection;
+        [ImportingConstructor]
         public Well141DataAdapter( IContainer container) : base(container)
         {
-            Logger.Debug("Instance of Well141DataAdapter created.");
-            //this.modulesCollection = new PPDM39.Modules.ModulesCollection((t) => t.UseSqlServer("Server=srvugeo07; Database=yarus; user=YarusApplication;Password=qwe123"));
+            Logger.Debug("Instance created.");
+            //this.modulesCollection = new PPDM39.Modules.ModulesCollection((t) => t.UseSqlServer("Server=srvugeo07; 
+        DbCollectionName = ObjectNames.Well141;
+            IdPropertyName = ObjectTypes.Uid;
+            NamePropertyName = ObjectTypes.NameProperty;
         }
 
-        public void GetCapabilities(CapServer capServer)
+    protected string DatabaseProvider { get; set; }
+    protected string DbCollectionName { get; set; }
+    protected string IdPropertyName { get; set; }
+    protected string NamePropertyName { get; set; }
+
+    public void GetCapabilities(CapServer capServer)
         {
             Logger.DebugFormat("Getting the supported capabilities for Well data version {0}.", capServer.Version);
 
@@ -34,7 +41,7 @@ namespace PDS.WITSMLstudio.Store.Data.Wells
             capServer.Add(Functions.UpdateInStore, ObjectTypes.Well);
             capServer.Add(Functions.DeleteFromStore, ObjectTypes.Well);
         }
-    
+
         /// <summary>
         /// Gets a data object by the specified URI.
         /// </summary>
@@ -55,6 +62,19 @@ namespace PDS.WITSMLstudio.Store.Data.Wells
         //    }
         //    return null;
         //}
+
+        public override  List<Well> Query(WitsmlQueryParser parser, ResponseContext context)
+        {
+            var client = new WellsClient("http://srvugeo07:53537");
+            var saved = client.GetAllAsync(null,null, null, null,0,10).Result ;
+            var mapped = saved.Items.Select(t => new Well()
+            {
+                Uid=t.Id ,
+                Name=t.WELL_NAME 
+            }
+            ).ToList();
+            return mapped;
+        }
 
 
     }

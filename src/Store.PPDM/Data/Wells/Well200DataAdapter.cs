@@ -4,6 +4,8 @@ using System.ComponentModel.Composition;
 using System.Linq;
 using Energistics.DataAccess.WITSML200;
 using Energistics.DataAccess.WITSML200.ComponentSchemas;
+using Energistics.Etp.Common.Datatypes;
+using LinqToQuerystring;
 using PDS.WITSMLstudio.Framework;
 using PDS.WITSMLstudio.Store.Configuration;
 
@@ -25,10 +27,10 @@ namespace PDS.WITSMLstudio.Store.Data.Wells
         /// <param name="databaseProvider">The database provider.</param>
         [ImportingConstructor]
         public Well200DataAdapter(IContainer container)
-            :base(container)
+            : base(container)
         {
 
-            Logger.Debug("Instance Well200DataAdapter created.");
+            Logger.Debug("Instance created.");
         }
     }
 }

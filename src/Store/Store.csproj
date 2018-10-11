@@ -243,6 +243,7 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <SubType>Designer</SubType>
     </Content>
+    <None Include="Properties\PublishProfiles\local witsml.pubxml" />
     <None Include="Properties\PublishProfiles\pds-witsml-web.pubxml" />
     <None Include="Properties\PublishProfiles\pds-witsml.pubxml" />
     <None Include="Properties\PublishProfiles\srvugeo07.pubxml" />

@@ -18,7 +18,7 @@ namespace PDS.WITSMLstudio.Store.Data
 #if (DEBUG)
         static readonly string ApiUri = "http://localhost:53538";
 #else
-         static readonly string ApiUri = "http://localhost";
+         static readonly string ApiUri = "http://srvugeo07:53537";
 #endif
         public YARUSapiAdapter(IContainer container, ObjectName objectName) : base(container)
         {
@@ -58,33 +58,32 @@ namespace PDS.WITSMLstudio.Store.Data
             UpdateEntity<T>(DbCollectionName.Name, DbCollectionName.Version, parser);
         }
 
+
         protected void UpdateEntity<TObject>(string dbCollectionName, string version, WitsmlQueryParser parser)
         {
             try
             {
-                Logger.DebugFormat($"Updating {dbCollectionName} YARUS collection");
-
-
-                StringBuilder sb = new StringBuilder();
-                using (var ws = new StringWriter(sb))
+                using (var transaction = GetTransaction())
                 {
-                    var writer = XmlWriter.Create(ws);
-                    parser.Root.WriteTo(writer);
-                }
-                string ContentXML = sb.ToString();
+                    Logger.DebugFormat($"Updating {dbCollectionName} YARUS collection");
 
-                StoreServiceClient client = new StoreServiceClient(ApiUri);
-                var response = client.Update_ObjectAsync(new YARUS.API.Models.Update_Request()
-                {
-                    ContentType = dbCollectionName,
-                    Protocol = version,
 
-                    Content = ContentXML
-                }).Result;
+                    string ContentXML = parser.Root.ToString();
 
-                if (response.Code != 0)
-                {
-                    throw new WitsmlException(ErrorCodes.ErrorUpdatingInDataStore, response.ErrorMessege);
+                    StoreServiceClient client = new StoreServiceClient(ApiUri);
+                    var response = client.Update_ObjectAsync(new YARUS.API.Models.Update_Request()
+                    {
+                        ContentType = dbCollectionName,
+                        Protocol = version,
+
+                        Content = ContentXML
+                    }).Result;
+
+                    if (response.Code != 0)
+                    {
+                        throw new WitsmlException(ErrorCodes.ErrorUpdatingInDataStore, response.ErrorMessege);
+                    }
+                    transaction.Commit();
                 }
             }
 
@@ -101,8 +100,8 @@ namespace PDS.WITSMLstudio.Store.Data
 
             var response = client.ExistAsync(new YARUS.API.Models.Exist_Request
             {
-                ObjectType = DbCollectionName,
-                Version = uri.Version,
+                ObjectType = DbCollectionName.Name,
+                Version = DbCollectionName.Version,
                 ObjectId = uri.ObjectId
             }).Result;
 

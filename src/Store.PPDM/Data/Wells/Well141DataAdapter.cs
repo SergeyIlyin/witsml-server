@@ -30,24 +30,12 @@ namespace PDS.WITSMLstudio.Store.Data.Wells
             Logger.DebugFormat("Getting the supported capabilities for Well data version {0}.", capServer.Version);
 
             capServer.Add(Functions.GetFromStore, ObjectTypes.Well);
-            //capServer.Add(Functions.AddToStore, ObjectTypes.Well);
+            capServer.Add(Functions.AddToStore, ObjectTypes.Well);
             capServer.Add(Functions.UpdateInStore, ObjectTypes.Well);
-            //capServer.Add(Functions.DeleteFromStore, ObjectTypes.Well);
+            capServer.Add(Functions.DeleteFromStore, ObjectTypes.Well);
         }
 
-        //public override List<Well> Query(WitsmlQueryParser parser, ResponseContext context)
-        //{
-        //    var client = new WellsClient("http://srvugeo07:53537");
-        //    var saved = client.GetAllAsync(null, null, null, null, 0, 10).Result;
-        //    var mapped = saved.Items.Select(t => new Well()
-        //    {
-        //        Uid = t.Id,
-        //        Name = t.WELL_NAME
 
-        //    }
-        //    ).ToList();
-        //    return mapped;
-        //}
 
 
     }

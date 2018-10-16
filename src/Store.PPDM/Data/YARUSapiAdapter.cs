@@ -5,9 +5,8 @@ using PDS.WITSMLstudio.Framework;
 using PDS.WITSMLstudio.Store.Configuration;
 using System;
 using System.Collections.Generic;
-using System.IO;
-using System.Text;
-using System.Xml;
+using System.Linq;
+using System.Xml.Linq;
 using YARUS.API;
 
 namespace PDS.WITSMLstudio.Store.Data
@@ -22,27 +21,34 @@ namespace PDS.WITSMLstudio.Store.Data
 #endif
         public YARUSapiAdapter(IContainer container, ObjectName objectName) : base(container)
         {
+
             DbCollectionName = objectName;
         }
 
         protected ObjectName DbCollectionName { get; set; }
+
         public override List<T> Query(WitsmlQueryParser parser, ResponseContext context)
         {
             try
             {
-                var objType = DbCollectionName.Name;
-                var version = DbCollectionName.Version;
-                var optionsIn = JsonConvert.SerializeObject(parser.Options, new KeyValuePairConverter());
-
-                string ContentXML=parser.Root.ToString();
                
 
                 var client = new StoreServiceClient(ApiUri);
-                var response = client.Get_ObjectAsync(objType, version, optionsIn, ContentXML).Result;
+
+                var request = new YARUS.API.Models.SendMeassegeRequest();
+                request.Action = MethodNames.GetObject;
+                request.ObjectTypeName = DbCollectionName.Name;
+                request.Version = DbCollectionName.Version;
+                request.Content = parser.Root  .ToString();
+                request.OptionsIn = JsonConvert.SerializeObject(parser.Options, new KeyValuePairConverter());
+
+
+                var response = client.Send_MeassageAsync(request).Result;
                 if (response.Code != 0)
                 {
                     throw new WitsmlException(ErrorCodes.ErrorReadingFromDataStore, response.ErrorMessege);
                 }
+
                 return Energistics.DataAccess.EnergisticsConverter.XmlToObject<List<T>>(response.Content);
             }
 
@@ -55,60 +61,109 @@ namespace PDS.WITSMLstudio.Store.Data
 
         public override void Update(WitsmlQueryParser parser, T dataObject)
         {
-            UpdateEntity<T>(DbCollectionName.Name, DbCollectionName.Version, parser);
-        }
-
-
-        protected void UpdateEntity<TObject>(string dbCollectionName, string version, WitsmlQueryParser parser)
-        {
             try
             {
+
                 using (var transaction = GetTransaction())
                 {
-                    Logger.DebugFormat($"Updating {dbCollectionName} YARUS collection");
+                    var client = new StoreServiceClient(ApiUri);
+
+                    var request = new YARUS.API.Models.SendMeassegeRequest();
+                    request.Action = MethodNames.UpdateObject;
+                    request.ObjectTypeName = DbCollectionName.Name;
+                    request.Version = DbCollectionName.Version;
+                    request.Content = parser.Element().ToString();
+                    request.OptionsIn = JsonConvert.SerializeObject(parser.Options, new KeyValuePairConverter());
 
 
-                    string ContentXML = parser.Root.ToString();
-
-                    StoreServiceClient client = new StoreServiceClient(ApiUri);
-                    var response = client.Update_ObjectAsync(new YARUS.API.Models.Update_Request()
-                    {
-                        ContentType = dbCollectionName,
-                        Protocol = version,
-
-                        Content = ContentXML
-                    }).Result;
-
+                    var response = client.Send_MeassageAsync(request).Result;
                     if (response.Code != 0)
                     {
                         throw new WitsmlException(ErrorCodes.ErrorUpdatingInDataStore, response.ErrorMessege);
                     }
                     transaction.Commit();
                 }
-            }
 
+            }
             catch (Exception ex)
             {
-                Logger.ErrorFormat("Error updating {0} YARUS collection: {1}", dbCollectionName, ex);
+                Logger.ErrorFormat("Error updating {0} YARUS collection: {1}", DbCollectionName, ex);
                 throw new WitsmlException(ErrorCodes.ErrorUpdatingInDataStore, ex);
             }
         }
 
+        
+
+        public override void Add(WitsmlQueryParser parser, T dataObject)
+        {
+            try
+            {
+                using (var transaction = GetTransaction())
+                {
+                    var client = new StoreServiceClient(ApiUri);
+
+                    var request = new YARUS.API.Models.SendMeassegeRequest();
+                    request.Action = MethodNames.AddObject;
+                    request.ObjectTypeName = DbCollectionName.Name;
+                    request.Version = DbCollectionName.Version;
+                    request.Content = Energistics.DataAccess.EnergisticsConverter.ObjectToXml(dataObject);
+                    request.OptionsIn = JsonConvert.SerializeObject(parser.Options, new KeyValuePairConverter());
+
+                    var response = client.Send_MeassageAsync(request).Result;
+                    if (response.Code != 0)
+                    {
+                        throw new WitsmlException(ErrorCodes.ErrorUpdatingInDataStore, response.ErrorMessege);
+                    }
+                    transaction.Commit();
+                }
+
+            }
+            catch (Exception ex)
+            {
+                Logger.ErrorFormat("Error adding {0} YARUS collection: {1}", DbCollectionName, ex);
+                throw new WitsmlException(ErrorCodes.ErrorUpdatingInDataStore, ex);
+            }
+
+        }
+
+
         public override bool Exists(EtpUri uri)
         {
-            StoreServiceClient client = new StoreServiceClient(ApiUri);
-
-            var response = client.ExistAsync(new YARUS.API.Models.Exist_Request
+            T dataObject = Activator.CreateInstance<T>();
+            Type type = typeof(T);
+            string objectType = DbCollectionName.Name;
+            var objectIds = uri.GetObjectIds()
+              .ToDictionary(x => x.ObjectType, x => x.ObjectId, StringComparer.InvariantCultureIgnoreCase);
+            if (!string.IsNullOrWhiteSpace(uri.ObjectId))
             {
-                ObjectType = DbCollectionName.Name,
-                Version = DbCollectionName.Version,
-                ObjectId = uri.ObjectId
-            }).Result;
+                type.GetProperty("Uid").SetValue(dataObject, uri.ObjectId);
+
+            }
+            if (objectIds.ContainsKey(ObjectTypes.Well) && !ObjectTypes.Well.EqualsIgnoreCase(objectType))
+            {
+                type.GetProperty("UidWell").SetValue(dataObject, objectIds[ObjectTypes.Well]);
+            }
+            if (objectIds.ContainsKey(ObjectTypes.Wellbore) && !ObjectTypes.Wellbore.EqualsIgnoreCase(objectType))
+            {
+                type.GetProperty("UidWellbore").SetValue(dataObject, objectIds[ObjectTypes.Wellbore]);
+            }
+
+
+            var client = new StoreServiceClient(ApiUri);
+
+            var request = new YARUS.API.Models.SendMeassegeRequest();
+            request.Action = MethodNames.ExistsObject;
+            request.ObjectTypeName = DbCollectionName.Name;
+            request.Version = DbCollectionName.Version;
+            request.Content = Energistics.DataAccess.EnergisticsConverter.ObjectToXml(dataObject);
+
+            var response = client.Send_MeassageAsync(request).Result;
 
             if (response.Code != 0)
             {
                 throw new WitsmlException(ErrorCodes.ErrorUpdatingInDataStore, response.ErrorMessege);
             }
+
             bool result;
             if (bool.TryParse(response.Content, out result))
             {
@@ -119,5 +174,23 @@ namespace PDS.WITSMLstudio.Store.Data
                 throw new WitsmlException(ErrorCodes.DataObjectNotExist);
             }
         }
+
+        //public override  int Count(EtpUri? parentUri = null)
+        //{
+
+        //    return 0;
+        //}
+
+
+        //public override  bool Any(EtpUri? parentUri = null)
+        //{
+        //    return false;
+        //}
+
+
+        //public virtual List<T> GetAll(EtpUri? parentUri = null)
+        //{
+        //    throw new NotImplementedException();
+        //}
     }
 }

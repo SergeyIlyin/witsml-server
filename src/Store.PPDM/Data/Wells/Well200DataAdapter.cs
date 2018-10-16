@@ -11,10 +11,6 @@ using PDS.WITSMLstudio.Store.Configuration;
 
 namespace PDS.WITSMLstudio.Store.Data.Wells
 {
-    /// <summary>
-    /// Data adapter that encapsulates CRUD functionality for <see cref="Well" />
-    /// </summary>
-    /// <seealso cref="PDS.WITSMLstudio.Store.Data.MongoDbDataAdapter{Well}" />
     [Export(typeof(IWitsmlDataAdapter<Well>))]
     [Export200(ObjectTypes.Well, typeof(IWitsmlDataAdapter))]
     [PartCreationPolicy(CreationPolicy.Shared)]
@@ -32,14 +28,9 @@ namespace PDS.WITSMLstudio.Store.Data.Wells
 
             Logger.Debug("Instance created.");
         }
-        //public void GetCapabilities(CapServer capServer)
-        //{
-        //    Logger.DebugFormat("Getting the supported capabilities for Well data version {0}.", capServer.Version);
 
-        //    capServer.Add(Functions.GetFromStore, ObjectTypes.Well);
-        //    capServer.Add(Functions.AddToStore, ObjectTypes.Well);
-        //    capServer.Add(Functions.UpdateInStore, ObjectTypes.Well);
-        //    capServer.Add(Functions.DeleteFromStore, ObjectTypes.Well);
-        //}
+
+
+    
     }
 }

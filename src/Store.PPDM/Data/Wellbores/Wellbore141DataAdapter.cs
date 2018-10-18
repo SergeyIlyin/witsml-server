@@ -70,5 +70,11 @@ namespace PDS.WITSMLstudio.Store.Data.Wellbores
             capServer.Add(Functions.UpdateInStore, ObjectTypes.Wellbore);
             capServer.Add(Functions.DeleteFromStore, ObjectTypes.Wellbore);
         }
+
+        public override bool Any(EtpUri? parentUri = null)
+        {
+            return false;
+        }
+
     }
 }

@@ -7,5 +7,7 @@
         public static string UpdateObject => "Update";
         public static string DeleteObject => "Delete";
         public static string ExistsObject => "Exist";
+        public static string CountObject => "Count";
+        public static string AnyObject => "Any";
     }
 }

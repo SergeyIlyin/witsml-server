@@ -12,7 +12,7 @@ namespace PDS.WITSMLstudio.Store.Data.Wells
     [Export(typeof(IWitsmlDataAdapter<Well>))]
     [Export141(ObjectTypes.Well, typeof(IWitsmlDataAdapter))]
     [PartCreationPolicy(CreationPolicy.Shared)]
-    public partial class Well141DataAdapter : YARUSapiAdapter<Well>, PDS.WITSMLstudio.Store.Configuration.IWitsml141Configuration
+    public partial class Well141DataAdapter : YARUSapiAdapter<Well>, IWitsml141Configuration
     {
         //  IModulesCollection modulesCollection;
         [ImportingConstructor]
@@ -36,77 +36,10 @@ namespace PDS.WITSMLstudio.Store.Data.Wells
         }
 
 
-        public override int Count(EtpUri? parentUri = null)
-        {
-            Well dataObject = Activator.CreateInstance<Well>();
-            if (parentUri == null)
-            {
-                dataObject.Uid = parentUri.Value.ObjectId;
-            }
-
-            var client = new StoreServiceClient(ApiUri);
-
-            var request = new YARUS.API.Models.SendMeassegeRequest();
-            request.Action = MethodNames.AnyObject;
-            request.ObjectTypeName = DbCollectionName.Name;
-            request.Version = DbCollectionName.Version;
-            request.Content = Energistics.DataAccess.EnergisticsConverter.ObjectToXml(dataObject);
-
-            var response = client.Send_MeassageAsync(request).Result;
-
-            if (response.Code != 0)
-            {
-                throw new WitsmlException(ErrorCodes.ErrorUpdatingInDataStore, response.ErrorMessege);
-            }
-
-            int result;
-
-            if (int.TryParse(response.Content, out result))
-            {
-                return result;
-            }
-            else
-            {
-                throw new WitsmlException(ErrorCodes.ErrorReadingFromDataStore);
-            }
-        }
+   
 
 
-        public override bool Any(EtpUri? parentUri = null)
-
-        {
-            Well dataObject = Activator.CreateInstance<Well>();
-            if (parentUri == null)
-            {
-                dataObject.Uid = parentUri.Value.ObjectId;
-            }
-
-            var client = new StoreServiceClient(ApiUri);
-
-            var request = new YARUS.API.Models.SendMeassegeRequest();
-            request.Action = MethodNames.AnyObject;
-            request.ObjectTypeName = DbCollectionName.Name;
-            request.Version = DbCollectionName.Version;
-            request.Content = Energistics.DataAccess.EnergisticsConverter.ObjectToXml(dataObject);
-
-            var response = client.Send_MeassageAsync(request).Result;
-
-            if (response.Code != 0)
-            {
-                throw new WitsmlException(ErrorCodes.ErrorUpdatingInDataStore, response.ErrorMessege);
-            }
-
-            bool result;
-
-            if (bool.TryParse(response.Content, out result))
-            {
-                return result;
-            }
-            else
-            {
-                throw new WitsmlException(ErrorCodes.ErrorReadingFromDataStore);
-            }
-        }
+  
 
     }
 }

@@ -8,10 +8,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using YARUS.API;
+using static PDS.WITSMLstudio.OptionsIn;
 
 namespace PDS.WITSMLstudio.Store.Data
 {
-    public class YARUSapiAdapter<T> : WitsmlDataAdapter<T>
+    public class YARUSapiAdapter<TEntity> : WitsmlDataAdapter<TEntity>
     {
         //static readonly string ApiUri = "http://srvugeo07:53537";
 #if (DEBUG)
@@ -27,21 +28,17 @@ namespace PDS.WITSMLstudio.Store.Data
 
         protected ObjectName DbCollectionName { get; set; }
 
-        public override List<T> Query(WitsmlQueryParser parser, ResponseContext context)
+        public override List<TEntity> Query(WitsmlQueryParser parser, ResponseContext context)
         {
             try
             {
-              
-
-
                 var response = RequestApi(MethodNames.GetObject, parser.Element().ToString(), parser.Options).Result;
-
                 if (response.Code != 0)
                 {
                     throw new WitsmlException(ErrorCodes.ErrorReadingFromDataStore, response.ErrorMessege);
                 }
-
-                return Energistics.DataAccess.EnergisticsConverter.XmlToObject<List<T>>(response.Content);
+                //return JsonConvert.DeserializeObject<List<T>>(response.Content);
+                return Energistics.DataAccess.EnergisticsConverter.XmlToObject<List<TEntity>>(response.Content);
             }
 
             catch (Exception ex)
@@ -51,7 +48,7 @@ namespace PDS.WITSMLstudio.Store.Data
             }
         }
 
-        public override void Update(WitsmlQueryParser parser, T dataObject)
+        public override void Update(WitsmlQueryParser parser, TEntity dataObject)
         {
             try
             {
@@ -86,7 +83,7 @@ namespace PDS.WITSMLstudio.Store.Data
 
 
 
-        public override void Add(WitsmlQueryParser parser, T dataObject)
+        public override void Add(WitsmlQueryParser parser, TEntity dataObject)
         {
             try
             {
@@ -111,6 +108,7 @@ namespace PDS.WITSMLstudio.Store.Data
 
         public override bool Exists(EtpUri uri)
         {
+
             var dataObject = FromUri(uri);
 
             var response = RequestApi(MethodNames.ExistsObject, dataObject).Result;
@@ -131,10 +129,58 @@ namespace PDS.WITSMLstudio.Store.Data
             }
         }
 
-        protected T FromUri(EtpUri uri)
+        public override bool Any(EtpUri? parentUri = null)
+
         {
-            T dataObject = Activator.CreateInstance<T>();
-            Type type = typeof(T);
+            TEntity dataObject = parentUri.HasValue ? FromUri(parentUri.Value) : Activator.CreateInstance<TEntity>();
+
+            var response = RequestApi(MethodNames.CountObject, dataObject).Result;
+
+            if (response.Code != 0)
+            {
+                throw new WitsmlException(ErrorCodes.ErrorUpdatingInDataStore, response.ErrorMessege);
+            }
+
+            bool result;
+
+            if (bool.TryParse(response.Content, out result))
+            {
+                return result;
+            }
+            else
+            {
+                throw new WitsmlException(ErrorCodes.ErrorReadingFromDataStore);
+            }
+        }
+
+        public override int Count(EtpUri? parentUri = null)
+        {
+            TEntity dataObject = parentUri.HasValue ? FromUri(parentUri.Value) : Activator.CreateInstance<TEntity>();
+
+            var response = RequestApi(MethodNames.CountObject, dataObject).Result;
+
+            if (response.Code != 0)
+            {
+                throw new WitsmlException(ErrorCodes.ErrorUpdatingInDataStore, response.ErrorMessege);
+            }
+
+            int result;
+
+            if (int.TryParse(response.Content, out result))
+            {
+                return result;
+            }
+            else
+            {
+                throw new WitsmlException(ErrorCodes.ErrorReadingFromDataStore);
+            }
+        }
+
+        protected TEntity FromUri(EtpUri uri)
+        {
+            TEntity dataObject = Activator.CreateInstance<TEntity>();
+
+            Type type = typeof(TEntity);
             string objectType = DbCollectionName.Name;
             var objectIds = uri.GetObjectIds()
               .ToDictionary(x => x.ObjectType, x => x.ObjectId, StringComparer.InvariantCultureIgnoreCase);
@@ -150,12 +196,13 @@ namespace PDS.WITSMLstudio.Store.Data
             {
                 type.GetProperty("UidWellbore").SetValue(dataObject, objectIds[ObjectTypes.Wellbore]);
             }
+
             return dataObject;
 
         }
         public override void Delete(WitsmlQueryParser parser)
         {
-            var uri = parser.GetUri<T>();
+            var uri = parser.GetUri<TEntity>();
             Delete(uri);
         }
         public override void Delete(EtpUri uri)
@@ -176,7 +223,7 @@ namespace PDS.WITSMLstudio.Store.Data
         {
             try
             {
-                T dataObject = FromUri(uri);
+                TEntity dataObject = FromUri(uri);
 
                 var response = RequestApi(MethodNames.DeleteObject, dataObject).Result;
 
@@ -194,7 +241,7 @@ namespace PDS.WITSMLstudio.Store.Data
 
 
 
-        protected Task<YARUS.API.Models.Response> RequestApi(string action, T dataObject, IDictionary<string, string> options = null)
+        protected Task<YARUS.API.Models.Response> RequestApi(string action, TEntity dataObject, IDictionary<string, string> options = null)
         {
             var content = Energistics.DataAccess.EnergisticsConverter.ObjectToXml(dataObject);
 
@@ -202,6 +249,7 @@ namespace PDS.WITSMLstudio.Store.Data
         }
         protected Task<YARUS.API.Models.Response> RequestApi(string action, string content, IDictionary<string, string> options = null)
         {
+
             var request = new YARUS.API.Models.SendMeassegeRequest();
             request.Action = action;
             request.ObjectTypeName = DbCollectionName.Name;
@@ -211,7 +259,33 @@ namespace PDS.WITSMLstudio.Store.Data
 
             var client = new StoreServiceClient(ApiUri);
 
+
             return client.Send_MeassageAsync(request);
+        }
+
+        public override List<TEntity> GetAll(EtpUri? parentUri = null)
+        {
+            TEntity dataObject = parentUri.HasValue ? FromUri(parentUri.Value) : Activator.CreateInstance<TEntity>();
+            Dictionary<string, string> optioons = new Dictionary<string, string>();
+            var n = ReturnElements.IdOnly;
+            optioons.Add(n.Key,n.Value );
+            try
+            {
+                var response = RequestApi(MethodNames.GetObject, dataObject, optioons ).Result;
+
+                if (response.Code != 0)
+                {
+                    throw new WitsmlException(ErrorCodes.ErrorReadingFromDataStore, response.ErrorMessege);
+                }
+                //return JsonConvert.DeserializeObject<List<T>>(response.Content);
+                return Energistics.DataAccess.EnergisticsConverter.XmlToObject<List<TEntity>>(response.Content);
+            }
+
+            catch (Exception ex)
+            {
+                Logger.Error($"Error query {DbCollectionName} YARUS collection: {ex}");
+                throw new WitsmlException(ErrorCodes.ErrorReadingFromDataStore, ex);
+            }
         }
     }
 }

@@ -33,46 +33,44 @@ using LinqToQuerystring;
 using PDS.WITSMLstudio.Framework;
 using PDS.WITSMLstudio.Store.Configuration;
 
-namespace PDS.WITSMLstudio.Store.Data.Trajectories
+namespace PDS.WITSMLstudio.Store.Data.Logs
 {
     /// <summary>
-    /// Data adapter that encapsulates CRUD functionality for <see cref="Trajectory" />
+    /// Data adapter that encapsulates CRUD functionality for <see cref="Log" />
     /// </summary>
-    /// <seealso cref="PDS.WITSMLstudio.Store.Data.Trajectories.TrajectoryDataAdapter{Trajectory,TrajectoryStation}" />
+    /// <seealso cref="PDS.WITSMLstudio.Store.Data.Logs.LogDataAdapter{Log,LogCurveInfo}" />
     [Export(typeof(IWitsml141Configuration))]
-    [Export(typeof(IWitsmlDataAdapter<Trajectory>))]
-    [Export141(ObjectTypes.Trajectory, typeof(IWitsmlDataAdapter))]
+    [Export(typeof(IWitsmlDataAdapter<Log>))]
+    [Export141(ObjectTypes.Log, typeof(IWitsmlDataAdapter))]
     [PartCreationPolicy(CreationPolicy.Shared)]
-    public partial class Trajectory141DataAdapter : TrajectoryDataAdapter<Trajectory, TrajectoryStation>,  IWitsml141Configuration
+    public partial class Log141DataAdapter : LogDataAdapter<Log, LogCurveInfo>, IWitsml141Configuration
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="Trajectory141DataAdapter" /> class.
+        /// Initializes a new instance of the <see cref="Log141DataAdapter" /> class.
         /// </summary>
         /// <param name="container">The composition container.</param>
         /// <param name="databaseProvider">The database provider.</param>
         [ImportingConstructor]
-        public Trajectory141DataAdapter(IContainer container)
-            :base(container, ObjectNames.Trajectory141)
+        public Log141DataAdapter(IContainer container)
+            : base(container, ObjectNames.Log141)
         {
             Logger.Debug("Instance created.");
         }
 
         /// <summary>
-        /// Gets the supported capabilities for the <see cref="Trajectory"/> object.
+        /// Gets the supported capabilities for the <see cref="Log"/> object.
         /// </summary>
         /// <param name="capServer">The capServer instance.</param>
         public void GetCapabilities(CapServer capServer)
         {
-            Logger.DebugFormat("Getting the supported capabilities for Trajectory data version {0}.", capServer.Version);
+            Logger.DebugFormat("Getting the supported capabilities for Log data version {0}.", capServer.Version);
 
-            capServer.Add(Functions.GetFromStore, ObjectTypes.Trajectory, WitsmlSettings.TrajectoryMaxDataNodesGet);
-            capServer.Add(Functions.AddToStore, ObjectTypes.Trajectory, WitsmlSettings.TrajectoryMaxDataNodesAdd);
-            capServer.Add(Functions.UpdateInStore, ObjectTypes.Trajectory, WitsmlSettings.TrajectoryMaxDataNodesUpdate);
-            capServer.Add(Functions.DeleteFromStore, ObjectTypes.Trajectory, WitsmlSettings.TrajectoryMaxDataNodesDelete);
-            capServer.SetGrowingTimeoutPeriod(ObjectTypes.Trajectory, WitsmlSettings.TrajectoryGrowingTimeoutPeriod);
+            capServer.Add(Functions.GetFromStore, ObjectTypes.Log, WitsmlSettings.LogMaxDataNodesGet, WitsmlSettings.LogMaxDataPointsGet);
+            capServer.Add(Functions.AddToStore, ObjectTypes.Log, WitsmlSettings.LogMaxDataNodesAdd, WitsmlSettings.LogMaxDataPointsAdd);
+            capServer.Add(Functions.UpdateInStore, ObjectTypes.Log, WitsmlSettings.LogMaxDataNodesUpdate, WitsmlSettings.LogMaxDataPointsUpdate);
+            capServer.Add(Functions.DeleteFromStore, ObjectTypes.Log, WitsmlSettings.LogMaxDataNodesDelete, WitsmlSettings.LogMaxDataPointsDelete);
+            capServer.SetGrowingTimeoutPeriod(ObjectTypes.Log, WitsmlSettings.LogGrowingTimeoutPeriod);
         }
 
-
-      
     }
 }

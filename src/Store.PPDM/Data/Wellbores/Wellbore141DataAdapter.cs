@@ -43,7 +43,7 @@ namespace PDS.WITSMLstudio.Store.Data.Wellbores
     [Export(typeof(IWitsmlDataAdapter<Wellbore>))]
     [Export141(ObjectTypes.Wellbore, typeof(IWitsmlDataAdapter))]
     [PartCreationPolicy(CreationPolicy.Shared)]
-    public partial class Wellbore141DataAdapter : WitsmlDataAdapter<Wellbore>, IWitsml141Configuration
+    public partial class Wellbore141DataAdapter : YARUSapiAdapter<Wellbore>, IWitsml141Configuration
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="Wellbore141DataAdapter" /> class.
@@ -52,7 +52,7 @@ namespace PDS.WITSMLstudio.Store.Data.Wellbores
         /// <param name="databaseProvider">The database provider.</param>
         [ImportingConstructor]
         public Wellbore141DataAdapter(IContainer container)
-            : base(container)
+            : base(container, ObjectNames.Wellbore141)
         {
             Logger.Debug("Instance created.");
         }
@@ -71,10 +71,7 @@ namespace PDS.WITSMLstudio.Store.Data.Wellbores
             capServer.Add(Functions.DeleteFromStore, ObjectTypes.Wellbore);
         }
 
-        public override bool Any(EtpUri? parentUri = null)
-        {
-            return false;
-        }
+
 
     }
 }

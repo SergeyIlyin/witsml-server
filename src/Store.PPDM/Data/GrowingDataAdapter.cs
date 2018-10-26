@@ -11,7 +11,7 @@ using PDS.WITSMLstudio.Store.Data.GrowingObjects;
 
 namespace PDS.WITSMLstudio.Store.Data
 {
-    public abstract class GrowingDataAdapter<T> : YARUSapiAdapter<T>, IGrowingObjectDataAdapter
+    public abstract class GrowingDataAdapter<TParent,TEntity> : YARUSapiAdapter<TParent, TEntity>, IGrowingObjectDataAdapter
     {
         public GrowingDataAdapter(IContainer container, ObjectName objectName) : base(container, objectName)
         {

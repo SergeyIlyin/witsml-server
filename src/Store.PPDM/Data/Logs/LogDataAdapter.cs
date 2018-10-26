@@ -38,12 +38,12 @@ namespace PDS.WITSMLstudio.Store.Data.Logs
     /// <summary>
     /// MongoDb data adapter that encapsulates CRUD functionality for Log objects.
     /// </summary>
-    /// <typeparam name="T">The data object type</typeparam>
+    /// <typeparam name="TEntity">The data object type</typeparam>
     /// <typeparam name="TChild">The type of the child.</typeparam>
     /// <seealso cref="PDS.WITSMLstudio.Store.Data.MongoDbDataAdapter{T}" />
     /// <seealso cref="PDS.WITSMLstudio.Store.Data.Channels.IChannelDataProvider" />
     [Export(typeof(IChannelDataProvider))]
-    public abstract class LogDataAdapter<T, TChild> :GrowingDataAdapter<T>, IChannelDataProvider where T : IWellboreObject where TChild : IUniqueId
+    public abstract class LogDataAdapter<TParent, TEntity, TChild> : GrowingDataAdapter<TParent, TEntity>, IChannelDataProvider where TEntity : IWellboreObject where TChild : IUniqueId
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="LogDataAdapter{T, TChild}" /> class.
@@ -51,7 +51,7 @@ namespace PDS.WITSMLstudio.Store.Data.Logs
         /// <param name="container">The composition container.</param>
         /// <param name="databaseProvider">The database provider.</param>
         /// <param name="dbCollectionName">Name of the database collection.</param>
-        protected LogDataAdapter(IContainer container, ObjectName objectName) :base(container, objectName)
+        protected LogDataAdapter(IContainer container, ObjectName objectName) : base(container, objectName)
         {
         }
 

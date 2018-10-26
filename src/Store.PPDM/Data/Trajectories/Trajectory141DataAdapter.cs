@@ -43,7 +43,7 @@ namespace PDS.WITSMLstudio.Store.Data.Trajectories
     [Export(typeof(IWitsmlDataAdapter<Trajectory>))]
     [Export141(ObjectTypes.Trajectory, typeof(IWitsmlDataAdapter))]
     [PartCreationPolicy(CreationPolicy.Shared)]
-    public partial class Trajectory141DataAdapter : TrajectoryDataAdapter<Trajectory, TrajectoryStation>,  IWitsml141Configuration
+    public partial class Trajectory141DataAdapter : TrajectoryDataAdapter<Wellbore, Trajectory, TrajectoryStation>, IWitsml141Configuration
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="Trajectory141DataAdapter" /> class.
@@ -52,7 +52,7 @@ namespace PDS.WITSMLstudio.Store.Data.Trajectories
         /// <param name="databaseProvider">The database provider.</param>
         [ImportingConstructor]
         public Trajectory141DataAdapter(IContainer container)
-            :base(container, ObjectNames.Trajectory141)
+            : base(container, ObjectNames.Trajectory141)
         {
             Logger.Debug("Instance created.");
         }
@@ -73,6 +73,6 @@ namespace PDS.WITSMLstudio.Store.Data.Trajectories
         }
 
 
-      
+
     }
 }

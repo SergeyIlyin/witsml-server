@@ -14,10 +14,10 @@ namespace PDS.WITSMLstudio.Store.Data.Wells
     [Export(typeof(IWitsmlDataAdapter<Well>))]
     [Export131(ObjectTypes.Well, typeof(IWitsmlDataAdapter))]
     [PartCreationPolicy(CreationPolicy.Shared)]
-    public partial class Well131DataAdapter : WitsmlDataAdapter<Well>, PDS.WITSMLstudio.Store.Configuration.IWitsml131Configuration
+    public partial class Well131DataAdapter : YARUSapiAdapter<Well, Well>, PDS.WITSMLstudio.Store.Configuration.IWitsml131Configuration
     {
         [ImportingConstructor]
-        public Well131DataAdapter(IContainer container) : base(container)
+        public Well131DataAdapter(IContainer container) :base(container, ObjectNames.Well131)
         {
             Logger.Debug("Instance created.");
             //this.modulesCollection = new PPDM39.Modules.ModulesCollection((t) => t.UseSqlServer("Server=srvugeo07; Database=yarus; user=YarusApplication;Password=qwe123"));

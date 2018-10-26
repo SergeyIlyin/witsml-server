@@ -8,11 +8,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using YARUS.API;
+using YARUS.WITSML.Application;
 using static PDS.WITSMLstudio.OptionsIn;
 
 namespace PDS.WITSMLstudio.Store.Data
 {
-    public class YARUSapiAdapter<TEntity> : WitsmlDataAdapter<TEntity>
+    public class YARUSapiAdapter<TParent, TEntity> : WitsmlDataAdapter<TEntity>
     {
         //static readonly string ApiUri = "http://srvugeo07:53537";
 #if (DEBUG)
@@ -30,163 +31,107 @@ namespace PDS.WITSMLstudio.Store.Data
 
         public override List<TEntity> Query(WitsmlQueryParser parser, ResponseContext context)
         {
-            try
-            {
-                var response = RequestApi(MethodNames.GetObject, parser.Element().ToString(), parser.Options).Result;
-                if (response.Code != 0)
-                {
-                    throw new WitsmlException(ErrorCodes.ErrorReadingFromDataStore, response.ErrorMessege);
-                }
-                //return JsonConvert.DeserializeObject<List<T>>(response.Content);
-                return Energistics.DataAccess.EnergisticsConverter.XmlToObject<List<TEntity>>(response.Content);
-            }
+            var response = RequestApi<List<TEntity>>(MethodNames.GetObject, parser.Element().ToString(), parser.Options).Result;
+            return response;
+        }
 
-            catch (Exception ex)
-            {
-                Logger.Error($"Error query {DbCollectionName} YARUS collection: {ex}");
-                throw new WitsmlException(ErrorCodes.ErrorReadingFromDataStore, ex);
-            }
+        public override List<TEntity> GetAll(EtpUri? parentUri = null)
+        {
+            TEntity dataObject = FromParentUri(parentUri.Value);
+            Dictionary<string, string> options = new Dictionary<string, string>();
+            var n = ReturnElements.IdOnly;
+            options.Add(n.Key, n.Value);
+            var response = RequestApi<List<TEntity>>(MethodNames.GetObject, dataObject, options).Result;
+            return response;
         }
 
         public override void Update(WitsmlQueryParser parser, TEntity dataObject)
         {
-            try
+            using (var transaction = GetTransaction())
             {
-
-                using (var transaction = GetTransaction())
-                {
-                    var client = new StoreServiceClient(ApiUri);
-
-                    var request = new YARUS.API.Models.SendMeassegeRequest();
-                    request.Action = MethodNames.UpdateObject;
-                    request.ObjectTypeName = DbCollectionName.Name;
-                    request.Version = DbCollectionName.Version;
-                    request.Content = parser.Element().ToString();
-                    request.OptionsIn = JsonConvert.SerializeObject(parser.Options, new KeyValuePairConverter());
-
-
-                    var response = client.Send_MeassageAsync(request).Result;
-                    if (response.Code != 0)
-                    {
-                        throw new WitsmlException(ErrorCodes.ErrorUpdatingInDataStore, response.ErrorMessege);
-                    }
-                    transaction.Commit();
-                }
-
-            }
-            catch (Exception ex)
-            {
-                Logger.ErrorFormat("Error updating {0} YARUS collection: {1}", DbCollectionName, ex);
-                throw new WitsmlException(ErrorCodes.ErrorUpdatingInDataStore, ex);
+                var response = RequestApi<bool>(MethodNames.UpdateObject, parser.Element().ToString(), parser.Options).Result;
+                transaction.Commit();
             }
         }
 
-
-
         public override void Add(WitsmlQueryParser parser, TEntity dataObject)
         {
-            try
-            {
-                using (var transaction = GetTransaction())
-                {
-                    var response = RequestApi(MethodNames.AddObject, dataObject, parser.Options).Result;
-                    if (response.Code != 0)
-                    {
-                        throw new WitsmlException(ErrorCodes.ErrorUpdatingInDataStore, response.ErrorMessege);
-                    }
-                    transaction.Commit();
-                }
-            }
-            catch (Exception ex)
-            {
-                Logger.ErrorFormat("Error adding {0} YARUS collection: {1}", DbCollectionName, ex);
-                throw new WitsmlException(ErrorCodes.ErrorUpdatingInDataStore, ex);
-            }
 
+            using (var transaction = GetTransaction())
+            {
+                var response = RequestApi<bool>(MethodNames.AddObject, dataObject, parser.Options).Result;
+
+                transaction.Commit();
+            }
         }
 
 
         public override bool Exists(EtpUri uri)
         {
-
             var dataObject = FromUri(uri);
-
-            var response = RequestApi(MethodNames.ExistsObject, dataObject).Result;
-
-            if (response.Code != 0)
-            {
-                throw new WitsmlException(ErrorCodes.ErrorUpdatingInDataStore, response.ErrorMessege);
-            }
-
-            bool result;
-            if (bool.TryParse(response.Content, out result))
-            {
-                return result;
-            }
-            else
-            {
-                throw new WitsmlException(ErrorCodes.DataObjectNotExist);
-            }
+            var content = Energistics.DataAccess.EnergisticsConverter.ObjectToXml(dataObject);
+            var response = RequestApi<bool>(MethodNames.ExistsObject, content).Result;
+            return response;
         }
 
         public override bool Any(EtpUri? parentUri = null)
 
         {
-            TEntity dataObject = parentUri.HasValue ? FromUri(parentUri.Value) : Activator.CreateInstance<TEntity>();
+            TEntity dataObject = FromParentUri(parentUri);
 
-            var response = RequestApi(MethodNames.CountObject, dataObject).Result;
-
-            if (response.Code != 0)
-            {
-                throw new WitsmlException(ErrorCodes.ErrorUpdatingInDataStore, response.ErrorMessege);
-            }
-
-            bool result;
-
-            if (bool.TryParse(response.Content, out result))
-            {
-                return result;
-            }
-            else
-            {
-                throw new WitsmlException(ErrorCodes.ErrorReadingFromDataStore);
-            }
+            var response = RequestApi<bool>(MethodNames.AnyObject, dataObject).Result;
+            return response;
         }
 
         public override int Count(EtpUri? parentUri = null)
         {
-            TEntity dataObject = parentUri.HasValue ? FromUri(parentUri.Value) : Activator.CreateInstance<TEntity>();
+            TEntity dataObject = FromParentUri(parentUri.Value);
 
-            var response = RequestApi(MethodNames.CountObject, dataObject).Result;
+            var response = RequestApi<int>(MethodNames.CountObject, dataObject).Result;
+            return response;
+        }
 
-            if (response.Code != 0)
+        public override void Delete(WitsmlQueryParser parser)
+        {
+            var uri = parser.GetUri<TEntity>();
+            Delete(uri);
+        }
+
+        public override void Delete(EtpUri uri)
+        {
+            using (var transaction = GetTransaction())
             {
-                throw new WitsmlException(ErrorCodes.ErrorUpdatingInDataStore, response.ErrorMessege);
-            }
+                if (WitsmlOperationContext.Current.IsCascadeDelete)
+                {
+                    DeleteAll(uri);
+                }
 
-            int result;
-
-            if (int.TryParse(response.Content, out result))
-            {
-                return result;
-            }
-            else
-            {
-                throw new WitsmlException(ErrorCodes.ErrorReadingFromDataStore);
+                DeleteEntity(uri);
+                transaction.Commit();
             }
         }
 
-        protected TEntity FromUri(EtpUri uri)
+        protected void DeleteEntity(EtpUri uri)
         {
-            TEntity dataObject = Activator.CreateInstance<TEntity>();
+            TEntity dataObject = FromUri(uri);
+            var response = RequestApi<bool>(MethodNames.DeleteObject, dataObject).Result;
+        }
 
+        protected TEntity FromUri(EtpUri? uri)
+        {
+
+            TEntity dataObject = Activator.CreateInstance<TEntity>();
+            if (!uri.HasValue)
+            {
+                return dataObject;
+            }
             Type type = typeof(TEntity);
             string objectType = DbCollectionName.Name;
-            var objectIds = uri.GetObjectIds()
+            var objectIds = uri.Value.GetObjectIds()
               .ToDictionary(x => x.ObjectType, x => x.ObjectId, StringComparer.InvariantCultureIgnoreCase);
-            if (!string.IsNullOrWhiteSpace(uri.ObjectId))
+            if (!string.IsNullOrWhiteSpace(uri.Value.ObjectId))
             {
-                type.GetProperty("Uid").SetValue(dataObject, uri.ObjectId);
+                type.GetProperty("Uid").SetValue(dataObject, uri.Value.ObjectId);
             }
             if (objectIds.ContainsKey(ObjectTypes.Well) && !ObjectTypes.Well.EqualsIgnoreCase(objectType))
             {
@@ -200,56 +145,26 @@ namespace PDS.WITSMLstudio.Store.Data
             return dataObject;
 
         }
-        public override void Delete(WitsmlQueryParser parser)
+        protected TEntity FromParentUri(EtpUri? parentUri = null)
         {
-            var uri = parser.GetUri<TEntity>();
-            Delete(uri);
-        }
-        public override void Delete(EtpUri uri)
-        {
-            using (var transaction = GetTransaction())
+            TEntity dataObject = Activator.CreateInstance<TEntity>();
+            if (!parentUri.HasValue)
             {
-
-                if (WitsmlOperationContext.Current.IsCascadeDelete)
-                {
-                    DeleteAll(uri);
-                }
-
-                DeleteEntity(uri);
-                transaction.Commit();
+                return dataObject;
             }
-        }
-        protected void DeleteEntity(EtpUri uri)
-        {
-            try
-            {
-                TEntity dataObject = FromUri(uri);
-
-                var response = RequestApi(MethodNames.DeleteObject, dataObject).Result;
-
-                if (response.Code != 0)
-                {
-                    throw new WitsmlException(ErrorCodes.ErrorUpdatingInDataStore, response.ErrorMessege);
-                }
-            }
-            catch (Exception ex)
-            {
-                Logger.ErrorFormat("Error deleting from {0} MongoDb collection: {1}", DbCollectionName.Name, ex);
-                throw new WitsmlException(ErrorCodes.ErrorDeletingFromDataStore, ex);
-            }
+            throw new NotImplementedException();
         }
 
 
 
-        protected Task<YARUS.API.Models.Response> RequestApi(string action, TEntity dataObject, IDictionary<string, string> options = null)
+        protected async Task<T> RequestApi<T>(string action, TEntity dataObject, IDictionary<string, string> options = null)
         {
             var content = Energistics.DataAccess.EnergisticsConverter.ObjectToXml(dataObject);
-
-            return RequestApi(action, content, options);
+            return await RequestApi<T>(action, content, options);
         }
-        protected Task<YARUS.API.Models.Response> RequestApi(string action, string content, IDictionary<string, string> options = null)
-        {
 
+        protected async Task<T> RequestApi<T>(string action, string content, IDictionary<string, string> options = null)
+        {
             var request = new YARUS.API.Models.SendMeassegeRequest();
             request.Action = action;
             request.ObjectTypeName = DbCollectionName.Name;
@@ -258,34 +173,15 @@ namespace PDS.WITSMLstudio.Store.Data
             request.OptionsIn = options == null ? null : string.Join(";", options.Select(t => t.Key + "=" + t.Value));
 
             var client = new StoreServiceClient(ApiUri);
+            var response = await client.Send_MeassageAsync(request);
 
-
-            return client.Send_MeassageAsync(request);
-        }
-
-        public override List<TEntity> GetAll(EtpUri? parentUri = null)
-        {
-            TEntity dataObject = parentUri.HasValue ? FromUri(parentUri.Value) : Activator.CreateInstance<TEntity>();
-            Dictionary<string, string> optioons = new Dictionary<string, string>();
-            var n = ReturnElements.IdOnly;
-            optioons.Add(n.Key,n.Value );
-            try
+            if (response.Code != 0)
             {
-                var response = RequestApi(MethodNames.GetObject, dataObject, optioons ).Result;
-
-                if (response.Code != 0)
-                {
-                    throw new WitsmlException(ErrorCodes.ErrorReadingFromDataStore, response.ErrorMessege);
-                }
-                //return JsonConvert.DeserializeObject<List<T>>(response.Content);
-                return Energistics.DataAccess.EnergisticsConverter.XmlToObject<List<TEntity>>(response.Content);
+                throw new WitsmlException(ErrorCodes.YarusStoreApiError, $"Action: {action} Meassage:{ response.ErrorMessege }");
             }
 
-            catch (Exception ex)
-            {
-                Logger.Error($"Error query {DbCollectionName} YARUS collection: {ex}");
-                throw new WitsmlException(ErrorCodes.ErrorReadingFromDataStore, ex);
-            }
+            return StringParser.ParseString<T>(response.Content);
         }
+
     }
 }

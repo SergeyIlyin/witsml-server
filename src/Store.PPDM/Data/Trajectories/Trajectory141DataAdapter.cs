@@ -73,6 +73,23 @@ namespace PDS.WITSMLstudio.Store.Data.Trajectories
         }
 
 
+        protected override Trajectory FromParentUri(EtpUri? parentUri = null)
+        {
+            var dataObject = Activator.CreateInstance<Trajectory>();
 
+            if (parentUri != null)
+            {
+                var ids = parentUri.Value.GetObjectIds().ToDictionary(x => x.ObjectType, y => y.ObjectId, StringComparer.CurrentCultureIgnoreCase);
+                var uidWellbore = ids[ObjectTypes.Wellbore];
+                var uidWell = ids[ObjectTypes.Well];
+
+                if (!string.IsNullOrWhiteSpace(uidWell))
+                    dataObject.UidWell = uidWell;
+                if (!string.IsNullOrWhiteSpace(uidWellbore))
+                    dataObject.UidWellbore = uidWellbore;
+            }
+
+            return dataObject;
+        }
     }
 }

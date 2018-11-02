@@ -9,10 +9,10 @@ namespace YARUS.WITSML.Application
         public static T ParseString<T>(string stringValue)
         {
             var result = ParseString(typeof(T), stringValue);
-        Energistics.DataAccess.EnergisticsConverter.XmlToObject<T>(stringValue);
+
             return (T)result;
         }
-        public static object ParseString(Type targetType, string stringValue)
+        static object ParseString(Type targetType, string stringValue)
         {
             if (targetType == typeof(string)) return stringValue;
 
@@ -58,7 +58,7 @@ namespace YARUS.WITSML.Application
         static object XmlToObject(Type targetType, string  xml)
         {
             var converterType = typeof(Energistics.DataAccess.EnergisticsConverter);
-            var genericMethod = converterType.GetMethod(nameof(Energistics.DataAccess.EnergisticsConverter.XmlToObject));
+            var genericMethod = converterType.GetMethod("XmlToObject", new Type[] { typeof(string) });
             var method= genericMethod.MakeGenericMethod(new Type[] { targetType });
 
             return method.Invoke(null, new object[] { xml });

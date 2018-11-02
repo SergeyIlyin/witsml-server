@@ -1,4 +1,5 @@
-﻿using Energistics.Etp.Common.Datatypes;
+﻿using Energistics.DataAccess;
+using Energistics.Etp.Common.Datatypes;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 using PDS.WITSMLstudio.Framework;
@@ -21,13 +22,17 @@ namespace PDS.WITSMLstudio.Store.Data
 #else
         protected     static readonly string ApiUri = "http://srvugeo07:53537";
 #endif
-        public YARUSapiAdapter(IContainer container, ObjectName objectName) : base(container)
+        public YARUSapiAdapter(IContainer container, string collectionName, string version) : base(container)
         {
 
-            DbCollectionName = objectName;
+            CollectionName = collectionName;
+            Version = version;
         }
+        public YARUSapiAdapter(IContainer container, ObjectName objectNames) : this(container, objectNames.Name, objectNames.Version)
+        { }
 
-        protected ObjectName DbCollectionName { get; set; }
+        protected string CollectionName { get; }
+        protected string Version { get; }
 
         public override List<TEntity> Query(WitsmlQueryParser parser, ResponseContext context)
         {
@@ -39,12 +44,30 @@ namespace PDS.WITSMLstudio.Store.Data
         {
             TEntity dataObject = FromParentUri(parentUri.Value);
             Dictionary<string, string> options = new Dictionary<string, string>();
-            var n = ReturnElements.IdOnly;
+            var n = OptionsIn.ReturnElements.ReturnElements.IdOnly;
             options.Add(n.Key, n.Value);
             var response = RequestApi<List<TEntity>>(MethodNames.GetObject, dataObject, options).Result;
+
+            var max = WitsmlSettings.MaxGetResourcesResponse;
+            while (response.Count > max)
+                response.RemoveAt(response.Count - 1);
             return response;
         }
 
+        private Dictionary<string, string> ReturnElements(string option)
+        {
+            Dictionary<string, string> options = new Dictionary<string, string>();
+
+            options.Add(OptionsIn.ReturnElements.Keyword, option);
+            return options;
+        }
+
+        public override TEntity Get(EtpUri uri, params string[] fields)
+        {
+            var entity = FromUri(uri);
+            var response = RequestApi<List<TEntity>>(MethodNames.GetObject, entity, ReturnElements(OptionsIn.ReturnElements.HeaderOnly)).Result;
+            return response.FirstOrDefault();
+        }
         public override void Update(WitsmlQueryParser parser, TEntity dataObject)
         {
             using (var transaction = GetTransaction())
@@ -85,10 +108,12 @@ namespace PDS.WITSMLstudio.Store.Data
 
         public override int Count(EtpUri? parentUri = null)
         {
+
             TEntity dataObject = FromParentUri(parentUri.Value);
 
             var response = RequestApi<int>(MethodNames.CountObject, dataObject).Result;
-            return response;
+            var max = WitsmlSettings.MaxGetResourcesResponse;
+            return Math.Min(max, response);
         }
 
         public override void Delete(WitsmlQueryParser parser)
@@ -126,7 +151,7 @@ namespace PDS.WITSMLstudio.Store.Data
                 return dataObject;
             }
             Type type = typeof(TEntity);
-            string objectType = DbCollectionName.Name;
+            string objectType = CollectionName;
             var objectIds = uri.Value.GetObjectIds()
               .ToDictionary(x => x.ObjectType, x => x.ObjectId, StringComparer.InvariantCultureIgnoreCase);
             if (!string.IsNullOrWhiteSpace(uri.Value.ObjectId))
@@ -145,42 +170,48 @@ namespace PDS.WITSMLstudio.Store.Data
             return dataObject;
 
         }
-        protected TEntity FromParentUri(EtpUri? parentUri = null)
+        protected virtual TEntity FromParentUri(EtpUri? parentUri = null)
         {
-            TEntity dataObject = Activator.CreateInstance<TEntity>();
-            if (!parentUri.HasValue)
-            {
-                return dataObject;
-            }
             throw new NotImplementedException();
         }
 
 
 
-        protected async Task<T> RequestApi<T>(string action, TEntity dataObject, IDictionary<string, string> options = null)
+
+        protected Task<T> RequestApi<T>(string action, TEntity dataObject, IDictionary<string, string> options = null)
         {
-            var content = Energistics.DataAccess.EnergisticsConverter.ObjectToXml(dataObject);
-            return await RequestApi<T>(action, content, options);
+
+
+            var content = WitsmlParser.ToXml(dataObject, false, true);
+
+            return RequestApi<T>(action, content, options);
         }
 
         protected async Task<T> RequestApi<T>(string action, string content, IDictionary<string, string> options = null)
         {
             var request = new YARUS.API.Models.SendMeassegeRequest();
             request.Action = action;
-            request.ObjectTypeName = DbCollectionName.Name;
-            request.Version = DbCollectionName.Version;
+            request.ObjectTypeName = CollectionName;
+            request.Version = Version;
             request.Content = content;
             request.OptionsIn = options == null ? null : string.Join(";", options.Select(t => t.Key + "=" + t.Value));
 
             var client = new StoreServiceClient(ApiUri);
-            var response = await client.Send_MeassageAsync(request);
-
-            if (response.Code != 0)
+            try
             {
-                throw new WitsmlException(ErrorCodes.YarusStoreApiError, $"Action: {action} Meassage:{ response.ErrorMessege }");
-            }
+                var response = await client.Send_MeassageAsync(request).ConfigureAwait(false);
 
-            return StringParser.ParseString<T>(response.Content);
+                if (response.Code != 0)
+                {
+                    throw new WitsmlException(ErrorCodes.YarusStoreApiError, $"Action: {action} Code:{response.Code} Meassage:{ response.ErrorMessege }");
+                }
+
+                return StringParser.ParseString<T>(response.Content);
+            }
+            catch (Exception ex)
+            {
+                throw new WitsmlException(ErrorCodes.YarusStoreApiError, $"Action: {action} Exception:{ ex.Message  }");
+            }
         }
 
     }

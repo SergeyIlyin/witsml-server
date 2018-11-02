@@ -72,6 +72,25 @@ namespace PDS.WITSMLstudio.Store.Data.Wellbores
         }
 
 
+        protected override Wellbore FromParentUri(EtpUri? parentUri = null)
+        {
 
+            Wellbore dataObject = Activator.CreateInstance<Wellbore>();
+            if (!parentUri.HasValue)
+            {
+                return dataObject;
+            }
+            Type type = typeof(Well);
+            string objectType = CollectionName;
+
+            if (!string.IsNullOrWhiteSpace(parentUri.Value.ObjectId))
+            {
+                dataObject.UidWell = parentUri.Value.ObjectId;
+            }
+           
+
+            return dataObject;
+
+        }
     }
 }

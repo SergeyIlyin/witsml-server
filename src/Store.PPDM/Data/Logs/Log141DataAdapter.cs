@@ -71,6 +71,24 @@ namespace PDS.WITSMLstudio.Store.Data.Logs
             capServer.Add(Functions.DeleteFromStore, ObjectTypes.Log, WitsmlSettings.LogMaxDataNodesDelete, WitsmlSettings.LogMaxDataPointsDelete);
             capServer.SetGrowingTimeoutPeriod(ObjectTypes.Log, WitsmlSettings.LogGrowingTimeoutPeriod);
         }
+        protected override Log FromParentUri(EtpUri? parentUri = null)
+        {
+            var dataObject = Activator.CreateInstance<Log>();
 
+            if (parentUri != null)
+            {
+                var ids = parentUri.Value.GetObjectIds().ToDictionary(x => x.ObjectType, y => y.ObjectId, StringComparer.CurrentCultureIgnoreCase);
+                var uidWellbore = ids[ObjectTypes.Wellbore];
+                var uidWell = ids[ObjectTypes.Well];
+
+                if (!string.IsNullOrWhiteSpace(uidWell))
+                    dataObject.UidWell = uidWell;
+
+                if (!string.IsNullOrWhiteSpace(uidWellbore))
+                    dataObject.UidWellbore = uidWellbore;
+            }
+
+            return dataObject;
+        }
     }
 }

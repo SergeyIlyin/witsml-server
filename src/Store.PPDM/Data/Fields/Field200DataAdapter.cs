@@ -13,7 +13,7 @@ namespace PDS.WITSMLstudio.Store.Data.Fields
     [Export(typeof(IWitsmlDataAdapter<Field>))]
     [Export200("field", typeof(IWitsmlDataAdapter))]
     [PartCreationPolicy(CreationPolicy.Shared)]
-    public class Field200DataAdapter : YARUSapiAdapter<Field, Field>
+    public class Field200DataAdapter : YARUSapiAdapter<Field>
     {
         [ImportingConstructor]
         public Field200DataAdapter(IContainer container) : base(container, "field", "2.0")

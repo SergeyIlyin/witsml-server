@@ -14,7 +14,7 @@ using static PDS.WITSMLstudio.OptionsIn;
 
 namespace PDS.WITSMLstudio.Store.Data
 {
-    public class YARUSapiAdapter<TParent, TEntity> : WitsmlDataAdapter<TEntity>
+    public class YARUSapiAdapter<TEntity> : WitsmlDataAdapter<TEntity>
     {
         //static readonly string ApiUri = "http://srvugeo07:53537";
 #if (DEBUG)

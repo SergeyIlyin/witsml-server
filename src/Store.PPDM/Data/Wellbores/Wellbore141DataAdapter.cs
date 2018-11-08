@@ -43,7 +43,7 @@ namespace PDS.WITSMLstudio.Store.Data.Wellbores
     [Export(typeof(IWitsmlDataAdapter<Wellbore>))]
     [Export141(ObjectTypes.Wellbore, typeof(IWitsmlDataAdapter))]
     [PartCreationPolicy(CreationPolicy.Shared)]
-    public partial class Wellbore141DataAdapter : YARUSapiAdapter<Well,Wellbore>, IWitsml141Configuration
+    public partial class Wellbore141DataAdapter : YARUSapiAdapter<Wellbore>, IWitsml141Configuration
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="Wellbore141DataAdapter" /> class.

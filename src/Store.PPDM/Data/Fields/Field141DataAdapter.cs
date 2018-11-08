@@ -16,7 +16,7 @@ namespace PDS.WITSMLstudio.Store.Data.Fields
     [Export(typeof(IWitsmlDataAdapter<Field>))]
     [Export141("field", typeof(IWitsmlDataAdapter))]
     [PartCreationPolicy(CreationPolicy.Shared)]
-    public class Field141DataAdapter : YARUSapiAdapter<Field, Field>, IWitsml141Configuration
+    public class Field141DataAdapter : YARUSapiAdapter<Field>, IWitsml141Configuration
     {
         [ImportingConstructor]
         public Field141DataAdapter(IContainer container) : base(container,  "field", "1.4.1.1")

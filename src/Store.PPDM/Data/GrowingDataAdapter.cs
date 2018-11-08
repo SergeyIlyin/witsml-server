@@ -11,15 +11,15 @@ using PDS.WITSMLstudio.Store.Data.GrowingObjects;
 
 namespace PDS.WITSMLstudio.Store.Data
 {
-    public abstract class GrowingDataAdapter<TParent,TEntity> : YARUSapiAdapter<TParent, TEntity>, IGrowingObjectDataAdapter
+    public abstract class GrowingDataAdapter<TEntity> : YARUSapiAdapter<TEntity>, IGrowingObjectDataAdapter
     {
         public GrowingDataAdapter(IContainer container, ObjectName objectName) : base(container, objectName)
         {
         }
 
-        public bool CanSaveData()
+        public virtual  bool CanSaveData()
         {
-            throw new NotImplementedException();
+            return true;
         }
 
         public void DeleteGrowingPart(EtpUri uri, string uid)

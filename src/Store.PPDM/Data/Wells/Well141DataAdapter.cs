@@ -13,7 +13,7 @@ namespace PDS.WITSMLstudio.Store.Data.Wells
     [Export(typeof(IWitsmlDataAdapter<Well>))]
     [Export141(ObjectTypes.Well, typeof(IWitsmlDataAdapter))]
     [PartCreationPolicy(CreationPolicy.Shared)]
-    public partial class Well141DataAdapter : YARUSapiAdapter<Well, Well>, IWitsml141Configuration
+    public partial class Well141DataAdapter : YARUSapiAdapter< Well>, IWitsml141Configuration
     {
         //  IModulesCollection modulesCollection;
         [ImportingConstructor]

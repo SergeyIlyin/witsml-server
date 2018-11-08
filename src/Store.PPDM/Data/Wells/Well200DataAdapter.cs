@@ -14,7 +14,7 @@ namespace PDS.WITSMLstudio.Store.Data.Wells
     [Export(typeof(IWitsmlDataAdapter<Well>))]
     [Export200(ObjectTypes.Well, typeof(IWitsmlDataAdapter))]
     [PartCreationPolicy(CreationPolicy.Shared)]
-    public partial class Well200DataAdapter : YARUSapiAdapter<Well,Well>
+    public partial class Well200DataAdapter : YARUSapiAdapter<Well>
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="Well200DataAdapter" /> class.

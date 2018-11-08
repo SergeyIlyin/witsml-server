@@ -43,7 +43,7 @@ namespace PDS.WITSMLstudio.Store.Data.Logs
     /// <seealso cref="PDS.WITSMLstudio.Store.Data.MongoDbDataAdapter{T}" />
     /// <seealso cref="PDS.WITSMLstudio.Store.Data.Channels.IChannelDataProvider" />
     [Export(typeof(IChannelDataProvider))]
-    public abstract class LogDataAdapter<TParent, TEntity, TChild> : GrowingDataAdapter<TParent, TEntity>, IChannelDataProvider where TEntity : IWellboreObject where TChild : IUniqueId
+    public abstract class LogDataAdapter<TEntity, TChild> : GrowingDataAdapter<TEntity>, IChannelDataProvider where TEntity : IWellboreObject where TChild : IUniqueId
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="LogDataAdapter{T, TChild}" /> class.

@@ -38,6 +38,8 @@ namespace YARUS.API.Models
 
 
 
+
+
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "9.11.0.0 (Newtonsoft.Json v9.0.0.0)")]
     public partial class AreaDto
     {
@@ -786,6 +788,975 @@ namespace YARUS.API.Models
     }
 
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "9.11.0.0 (Newtonsoft.Json v9.0.0.0)")]
+    public partial class EtpContentType
+    {
+        [Newtonsoft.Json.JsonProperty("family", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public string Family { get; set; }
+
+        [Newtonsoft.Json.JsonProperty("format", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public string Format { get; set; }
+
+        [Newtonsoft.Json.JsonProperty("version", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public string Version { get; set; }
+
+        [Newtonsoft.Json.JsonProperty("objectType", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public string ObjectType { get; set; }
+
+        [Newtonsoft.Json.JsonProperty("isValid", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public bool? IsValid { get; set; }
+
+        [Newtonsoft.Json.JsonProperty("isBaseType", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public bool? IsBaseType { get; set; }
+
+        public string ToJson()
+        {
+            return Newtonsoft.Json.JsonConvert.SerializeObject(this);
+        }
+
+        public static EtpContentType FromJson(string data)
+        {
+            return Newtonsoft.Json.JsonConvert.DeserializeObject<EtpContentType>(data);
+        }
+
+    }
+
+    [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "9.11.0.0 (Newtonsoft.Json v9.0.0.0)")]
+    public partial class Well
+    {
+        [Newtonsoft.Json.JsonProperty("nameLegal", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [System.ComponentModel.DataAnnotations.StringLength(64)]
+        public string NameLegal { get; set; }
+
+        [Newtonsoft.Json.JsonProperty("numLicense", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [System.ComponentModel.DataAnnotations.StringLength(64)]
+        public string NumLicense { get; set; }
+
+        [Newtonsoft.Json.JsonProperty("numGovt", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [System.ComponentModel.DataAnnotations.StringLength(64)]
+        public string NumGovt { get; set; }
+
+        [Newtonsoft.Json.JsonProperty("dateTimeLicense", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public object DateTimeLicense { get; set; }
+
+        [Newtonsoft.Json.JsonProperty("field", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [System.ComponentModel.DataAnnotations.StringLength(64)]
+        public string Field { get; set; }
+
+        [Newtonsoft.Json.JsonProperty("country", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [System.ComponentModel.DataAnnotations.StringLength(64)]
+        public string Country { get; set; }
+
+        [Newtonsoft.Json.JsonProperty("state", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [System.ComponentModel.DataAnnotations.StringLength(64)]
+        public string State { get; set; }
+
+        [Newtonsoft.Json.JsonProperty("county", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [System.ComponentModel.DataAnnotations.StringLength(64)]
+        public string County { get; set; }
+
+        [Newtonsoft.Json.JsonProperty("region", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [System.ComponentModel.DataAnnotations.StringLength(64)]
+        public string Region { get; set; }
+
+        [Newtonsoft.Json.JsonProperty("district", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [System.ComponentModel.DataAnnotations.StringLength(64)]
+        public string District { get; set; }
+
+        [Newtonsoft.Json.JsonProperty("block", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [System.ComponentModel.DataAnnotations.StringLength(64)]
+        public string Block { get; set; }
+
+        [Newtonsoft.Json.JsonProperty("timeZone", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [System.ComponentModel.DataAnnotations.StringLength(64)]
+        [System.ComponentModel.DataAnnotations.RegularExpression(@"[Z]|([\-+](([01][0-9])|(2[0-3])):[0-5][0-9])")]
+        public string TimeZone { get; set; }
+
+        [Newtonsoft.Json.JsonProperty("operator", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [System.ComponentModel.DataAnnotations.StringLength(64)]
+        public string Operator { get; set; }
+
+        [Newtonsoft.Json.JsonProperty("operatorDivision", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [System.ComponentModel.DataAnnotations.StringLength(64)]
+        public string OperatorDivision { get; set; }
+
+        [Newtonsoft.Json.JsonProperty("originalOperator", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [System.ComponentModel.DataAnnotations.StringLength(64)]
+        public string OriginalOperator { get; set; }
+
+        [Newtonsoft.Json.JsonProperty("percentInterest", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public DimensionlessMeasure PercentInterest { get; set; }
+
+        [Newtonsoft.Json.JsonProperty("numAPI", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [System.ComponentModel.DataAnnotations.StringLength(64)]
+        public string NumAPI { get; set; }
+
+        [Newtonsoft.Json.JsonProperty("statusWell", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public WellStatusWell? StatusWell { get; set; }
+
+        [Newtonsoft.Json.JsonProperty("statusWellSpecified", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public bool? StatusWellSpecified { get; set; }
+
+        [Newtonsoft.Json.JsonProperty("purposeWell", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public WellPurposeWell? PurposeWell { get; set; }
+
+        [Newtonsoft.Json.JsonProperty("purposeWellSpecified", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public bool? PurposeWellSpecified { get; set; }
+
+        [Newtonsoft.Json.JsonProperty("fluidWell", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public WellFluidWell? FluidWell { get; set; }
+
+        [Newtonsoft.Json.JsonProperty("fluidWellSpecified", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public bool? FluidWellSpecified { get; set; }
+
+        [Newtonsoft.Json.JsonProperty("directionWell", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public WellDirectionWell? DirectionWell { get; set; }
+
+        [Newtonsoft.Json.JsonProperty("directionWellSpecified", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public bool? DirectionWellSpecified { get; set; }
+
+        [Newtonsoft.Json.JsonProperty("dateTimeSpud", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public object DateTimeSpud { get; set; }
+
+        [Newtonsoft.Json.JsonProperty("dateTimePluggedAndAbandoned", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public object DateTimePluggedAndAbandoned { get; set; }
+
+        [Newtonsoft.Json.JsonProperty("waterDepth", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public LengthMeasure WaterDepth { get; set; }
+
+        [Newtonsoft.Json.JsonProperty("geographicLocationWGS84", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public GeodeticWellLocation GeographicLocationWGS84 { get; set; }
+
+        [Newtonsoft.Json.JsonProperty("wellLocation", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public System.Collections.ObjectModel.ObservableCollection<AbstractWellLocation> WellLocation { get; set; }
+
+        [Newtonsoft.Json.JsonProperty("wellLocationSpecified", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public bool? WellLocationSpecified { get; set; }
+
+        [Newtonsoft.Json.JsonProperty("wellPublicLandSurveySystemLocation", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public PublicLandSurveySystem WellPublicLandSurveySystemLocation { get; set; }
+
+        [Newtonsoft.Json.JsonProperty("referencePoint", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public System.Collections.ObjectModel.ObservableCollection<ReferencePoint> ReferencePoint { get; set; }
+
+        [Newtonsoft.Json.JsonProperty("referencePointSpecified", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public bool? ReferencePointSpecified { get; set; }
+
+        [Newtonsoft.Json.JsonProperty("wellheadElevation", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public WellElevationCoord WellheadElevation { get; set; }
+
+        [Newtonsoft.Json.JsonProperty("wellDatum", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public System.Collections.ObjectModel.ObservableCollection<WellDatum> WellDatum { get; set; }
+
+        [Newtonsoft.Json.JsonProperty("wellDatumSpecified", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public bool? WellDatumSpecified { get; set; }
+
+        [Newtonsoft.Json.JsonProperty("groundElevation", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public WellElevationCoord GroundElevation { get; set; }
+
+        [Newtonsoft.Json.JsonProperty("aliases", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public System.Collections.ObjectModel.ObservableCollection<ObjectAlias> Aliases { get; set; }
+
+        [Newtonsoft.Json.JsonProperty("aliasesSpecified", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public bool? AliasesSpecified { get; set; }
+
+        [Newtonsoft.Json.JsonProperty("citation", Required = Newtonsoft.Json.Required.Always)]
+        [System.ComponentModel.DataAnnotations.Required]
+        public Citation Citation { get; set; } = new Citation();
+
+        [Newtonsoft.Json.JsonProperty("customData", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public CustomData CustomData { get; set; }
+
+        [Newtonsoft.Json.JsonProperty("extensionNameValue", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public System.Collections.ObjectModel.ObservableCollection<ExtensionNameValue> ExtensionNameValue { get; set; }
+
+        [Newtonsoft.Json.JsonProperty("extensionNameValueSpecified", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public bool? ExtensionNameValueSpecified { get; set; }
+
+        [Newtonsoft.Json.JsonProperty("objectVersion", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [System.ComponentModel.DataAnnotations.StringLength(64)]
+        public string ObjectVersion { get; set; }
+
+        [Newtonsoft.Json.JsonProperty("schemaVersion", Required = Newtonsoft.Json.Required.Always)]
+        [System.ComponentModel.DataAnnotations.Required(AllowEmptyStrings = true)]
+        [System.ComponentModel.DataAnnotations.StringLength(64)]
+        public string SchemaVersion { get; set; }
+
+        [Newtonsoft.Json.JsonProperty("uuid", Required = Newtonsoft.Json.Required.Always)]
+        [System.ComponentModel.DataAnnotations.Required(AllowEmptyStrings = true)]
+        [System.ComponentModel.DataAnnotations.RegularExpression(@"[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}")]
+        public string Uuid { get; set; }
+
+        [Newtonsoft.Json.JsonProperty("existenceKind", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public WellExistenceKind? ExistenceKind { get; set; }
+
+        [Newtonsoft.Json.JsonProperty("existenceKindSpecified", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public bool? ExistenceKindSpecified { get; set; }
+
+        public string ToJson()
+        {
+            return Newtonsoft.Json.JsonConvert.SerializeObject(this);
+        }
+
+        public static Well FromJson(string data)
+        {
+            return Newtonsoft.Json.JsonConvert.DeserializeObject<Well>(data);
+        }
+
+    }
+
+    [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "9.11.0.0 (Newtonsoft.Json v9.0.0.0)")]
+    public partial class DimensionlessMeasure
+    {
+        [Newtonsoft.Json.JsonProperty("uom", Required = Newtonsoft.Json.Required.Always)]
+        public DimensionlessMeasureUom Uom { get; set; }
+
+        [Newtonsoft.Json.JsonProperty("value", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public double? Value { get; set; }
+
+        public string ToJson()
+        {
+            return Newtonsoft.Json.JsonConvert.SerializeObject(this);
+        }
+
+        public static DimensionlessMeasure FromJson(string data)
+        {
+            return Newtonsoft.Json.JsonConvert.DeserializeObject<DimensionlessMeasure>(data);
+        }
+
+    }
+
+    [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "9.11.0.0 (Newtonsoft.Json v9.0.0.0)")]
+    public partial class LengthMeasure
+    {
+        [Newtonsoft.Json.JsonProperty("uom", Required = Newtonsoft.Json.Required.Always)]
+        public LengthMeasureUom Uom { get; set; }
+
+        [Newtonsoft.Json.JsonProperty("value", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public double? Value { get; set; }
+
+        public string ToJson()
+        {
+            return Newtonsoft.Json.JsonConvert.SerializeObject(this);
+        }
+
+        public static LengthMeasure FromJson(string data)
+        {
+            return Newtonsoft.Json.JsonConvert.DeserializeObject<LengthMeasure>(data);
+        }
+
+    }
+
+    [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "9.11.0.0 (Newtonsoft.Json v9.0.0.0)")]
+    public partial class GeodeticWellLocation
+    {
+        [Newtonsoft.Json.JsonProperty("latitude", Required = Newtonsoft.Json.Required.Always)]
+        [System.ComponentModel.DataAnnotations.Required]
+        public PlaneAngleMeasure Latitude { get; set; } = new PlaneAngleMeasure();
+
+        [Newtonsoft.Json.JsonProperty("longitude", Required = Newtonsoft.Json.Required.Always)]
+        [System.ComponentModel.DataAnnotations.Required]
+        public PlaneAngleMeasure Longitude { get; set; } = new PlaneAngleMeasure();
+
+        [Newtonsoft.Json.JsonProperty("crs", Required = Newtonsoft.Json.Required.Always)]
+        [System.ComponentModel.DataAnnotations.Required]
+        public object Crs { get; set; } = new object();
+
+        [Newtonsoft.Json.JsonProperty("original", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public bool? Original { get; set; }
+
+        [Newtonsoft.Json.JsonProperty("originalSpecified", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public bool? OriginalSpecified { get; set; }
+
+        [Newtonsoft.Json.JsonProperty("description", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [System.ComponentModel.DataAnnotations.StringLength(2000)]
+        public string Description { get; set; }
+
+        [Newtonsoft.Json.JsonProperty("extensionNameValue", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public System.Collections.ObjectModel.ObservableCollection<ExtensionNameValue> ExtensionNameValue { get; set; }
+
+        [Newtonsoft.Json.JsonProperty("extensionNameValueSpecified", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public bool? ExtensionNameValueSpecified { get; set; }
+
+        [Newtonsoft.Json.JsonProperty("uid", Required = Newtonsoft.Json.Required.Always)]
+        [System.ComponentModel.DataAnnotations.Required(AllowEmptyStrings = true)]
+        [System.ComponentModel.DataAnnotations.StringLength(64)]
+        public string Uid { get; set; }
+
+        public string ToJson()
+        {
+            return Newtonsoft.Json.JsonConvert.SerializeObject(this);
+        }
+
+        public static GeodeticWellLocation FromJson(string data)
+        {
+            return Newtonsoft.Json.JsonConvert.DeserializeObject<GeodeticWellLocation>(data);
+        }
+
+    }
+
+    [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "9.11.0.0 (Newtonsoft.Json v9.0.0.0)")]
+    public partial class AbstractWellLocation
+    {
+        [Newtonsoft.Json.JsonProperty("original", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public bool? Original { get; set; }
+
+        [Newtonsoft.Json.JsonProperty("originalSpecified", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public bool? OriginalSpecified { get; set; }
+
+        [Newtonsoft.Json.JsonProperty("description", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [System.ComponentModel.DataAnnotations.StringLength(2000)]
+        public string Description { get; set; }
+
+        [Newtonsoft.Json.JsonProperty("extensionNameValue", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public System.Collections.ObjectModel.ObservableCollection<ExtensionNameValue> ExtensionNameValue { get; set; }
+
+        [Newtonsoft.Json.JsonProperty("extensionNameValueSpecified", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public bool? ExtensionNameValueSpecified { get; set; }
+
+        [Newtonsoft.Json.JsonProperty("uid", Required = Newtonsoft.Json.Required.Always)]
+        [System.ComponentModel.DataAnnotations.Required(AllowEmptyStrings = true)]
+        [System.ComponentModel.DataAnnotations.StringLength(64)]
+        public string Uid { get; set; }
+
+        public string ToJson()
+        {
+            return Newtonsoft.Json.JsonConvert.SerializeObject(this);
+        }
+
+        public static AbstractWellLocation FromJson(string data)
+        {
+            return Newtonsoft.Json.JsonConvert.DeserializeObject<AbstractWellLocation>(data);
+        }
+
+    }
+
+    [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "9.11.0.0 (Newtonsoft.Json v9.0.0.0)")]
+    public partial class PublicLandSurveySystem
+    {
+        [Newtonsoft.Json.JsonProperty("principalMeridian", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public PublicLandSurveySystemPrincipalMeridian? PrincipalMeridian { get; set; }
+
+        [Newtonsoft.Json.JsonProperty("principalMeridianSpecified", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public bool? PrincipalMeridianSpecified { get; set; }
+
+        [Newtonsoft.Json.JsonProperty("range", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public int? Range { get; set; }
+
+        [Newtonsoft.Json.JsonProperty("rangeSpecified", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public bool? RangeSpecified { get; set; }
+
+        [Newtonsoft.Json.JsonProperty("rangeDir", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public PublicLandSurveySystemRangeDir? RangeDir { get; set; }
+
+        [Newtonsoft.Json.JsonProperty("rangeDirSpecified", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public bool? RangeDirSpecified { get; set; }
+
+        [Newtonsoft.Json.JsonProperty("township", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public int? Township { get; set; }
+
+        [Newtonsoft.Json.JsonProperty("townshipSpecified", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public bool? TownshipSpecified { get; set; }
+
+        [Newtonsoft.Json.JsonProperty("townshipDir", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public PublicLandSurveySystemTownshipDir? TownshipDir { get; set; }
+
+        [Newtonsoft.Json.JsonProperty("townshipDirSpecified", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public bool? TownshipDirSpecified { get; set; }
+
+        [Newtonsoft.Json.JsonProperty("section", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [System.ComponentModel.DataAnnotations.StringLength(64)]
+        [System.ComponentModel.DataAnnotations.RegularExpression(@"[+]?([1-9]|[1-2][0-9]|3[0-6])\.?[0-9]?")]
+        public string Section { get; set; }
+
+        [Newtonsoft.Json.JsonProperty("quarterSection", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [System.ComponentModel.DataAnnotations.StringLength(64)]
+        [System.ComponentModel.DataAnnotations.RegularExpression(@"(NE|NW|SW|SE|N2|S2|E2|W2|C|LT[0-9]{2,2}|TR[a-zA-Z0-9]{1,2}){1,3}")]
+        public string QuarterSection { get; set; }
+
+        [Newtonsoft.Json.JsonProperty("quarterTownship", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [System.ComponentModel.DataAnnotations.StringLength(64)]
+        [System.ComponentModel.DataAnnotations.RegularExpression(@"NE|NW|SW|SE")]
+        public string QuarterTownship { get; set; }
+
+        [Newtonsoft.Json.JsonProperty("footageNS", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public DistanceNorthSouth FootageNS { get; set; }
+
+        [Newtonsoft.Json.JsonProperty("footageEW", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public DistanceEastWest FootageEW { get; set; }
+
+        public string ToJson()
+        {
+            return Newtonsoft.Json.JsonConvert.SerializeObject(this);
+        }
+
+        public static PublicLandSurveySystem FromJson(string data)
+        {
+            return Newtonsoft.Json.JsonConvert.DeserializeObject<PublicLandSurveySystem>(data);
+        }
+
+    }
+
+    [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "9.11.0.0 (Newtonsoft.Json v9.0.0.0)")]
+    public partial class ReferencePoint
+    {
+        [Newtonsoft.Json.JsonProperty("name", Required = Newtonsoft.Json.Required.Always)]
+        [System.ComponentModel.DataAnnotations.Required(AllowEmptyStrings = true)]
+        [System.ComponentModel.DataAnnotations.StringLength(64)]
+        public string Name { get; set; }
+
+        [Newtonsoft.Json.JsonProperty("type", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [System.ComponentModel.DataAnnotations.StringLength(64)]
+        public string Type { get; set; }
+
+        [Newtonsoft.Json.JsonProperty("measuredDepth", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public MeasuredDepthCoord MeasuredDepth { get; set; }
+
+        [Newtonsoft.Json.JsonProperty("description", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [System.ComponentModel.DataAnnotations.StringLength(2000)]
+        public string Description { get; set; }
+
+        [Newtonsoft.Json.JsonProperty("extensionNameValue", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public System.Collections.ObjectModel.ObservableCollection<ExtensionNameValue> ExtensionNameValue { get; set; }
+
+        [Newtonsoft.Json.JsonProperty("extensionNameValueSpecified", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public bool? ExtensionNameValueSpecified { get; set; }
+
+        [Newtonsoft.Json.JsonProperty("elevation", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public WellElevationCoord Elevation { get; set; }
+
+        [Newtonsoft.Json.JsonProperty("location", Required = Newtonsoft.Json.Required.Always)]
+        [System.ComponentModel.DataAnnotations.Required]
+        public System.Collections.ObjectModel.ObservableCollection<AbstractWellLocation> Location { get; set; } = new System.Collections.ObjectModel.ObservableCollection<AbstractWellLocation>();
+
+        [Newtonsoft.Json.JsonProperty("locationSpecified", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public bool? LocationSpecified { get; set; }
+
+        [Newtonsoft.Json.JsonProperty("uid", Required = Newtonsoft.Json.Required.Always)]
+        [System.ComponentModel.DataAnnotations.Required(AllowEmptyStrings = true)]
+        [System.ComponentModel.DataAnnotations.StringLength(64)]
+        public string Uid { get; set; }
+
+        public string ToJson()
+        {
+            return Newtonsoft.Json.JsonConvert.SerializeObject(this);
+        }
+
+        public static ReferencePoint FromJson(string data)
+        {
+            return Newtonsoft.Json.JsonConvert.DeserializeObject<ReferencePoint>(data);
+        }
+
+    }
+
+    [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "9.11.0.0 (Newtonsoft.Json v9.0.0.0)")]
+    public partial class WellElevationCoord
+    {
+        [Newtonsoft.Json.JsonProperty("uom", Required = Newtonsoft.Json.Required.Always)]
+        public WellElevationCoordUom Uom { get; set; }
+
+        [Newtonsoft.Json.JsonProperty("datum", Required = Newtonsoft.Json.Required.Always)]
+        [System.ComponentModel.DataAnnotations.Required(AllowEmptyStrings = true)]
+        [System.ComponentModel.DataAnnotations.StringLength(64)]
+        public string Datum { get; set; }
+
+        [Newtonsoft.Json.JsonProperty("value", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public double? Value { get; set; }
+
+        public string ToJson()
+        {
+            return Newtonsoft.Json.JsonConvert.SerializeObject(this);
+        }
+
+        public static WellElevationCoord FromJson(string data)
+        {
+            return Newtonsoft.Json.JsonConvert.DeserializeObject<WellElevationCoord>(data);
+        }
+
+    }
+
+    [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "9.11.0.0 (Newtonsoft.Json v9.0.0.0)")]
+    public partial class WellDatum
+    {
+        [Newtonsoft.Json.JsonProperty("name", Required = Newtonsoft.Json.Required.Always)]
+        [System.ComponentModel.DataAnnotations.Required(AllowEmptyStrings = true)]
+        [System.ComponentModel.DataAnnotations.StringLength(64)]
+        public string Name { get; set; }
+
+        [Newtonsoft.Json.JsonProperty("code", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public WellDatumCode? Code { get; set; }
+
+        [Newtonsoft.Json.JsonProperty("codeSpecified", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public bool? CodeSpecified { get; set; }
+
+        [Newtonsoft.Json.JsonProperty("kind", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public System.Collections.ObjectModel.ObservableCollection<string> Kind { get; set; }
+
+        [Newtonsoft.Json.JsonProperty("kindSpecified", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public bool? KindSpecified { get; set; }
+
+        [Newtonsoft.Json.JsonProperty("measuredDepth", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public MeasuredDepthCoord MeasuredDepth { get; set; }
+
+        [Newtonsoft.Json.JsonProperty("comment", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [System.ComponentModel.DataAnnotations.StringLength(2000)]
+        public string Comment { get; set; }
+
+        [Newtonsoft.Json.JsonProperty("extensionNameValue", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public System.Collections.ObjectModel.ObservableCollection<ExtensionNameValue> ExtensionNameValue { get; set; }
+
+        [Newtonsoft.Json.JsonProperty("extensionNameValueSpecified", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public bool? ExtensionNameValueSpecified { get; set; }
+
+        [Newtonsoft.Json.JsonProperty("wellbore", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public RefWellbore Wellbore { get; set; }
+
+        [Newtonsoft.Json.JsonProperty("rig", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public RefWellboreRig Rig { get; set; }
+
+        [Newtonsoft.Json.JsonProperty("elevation", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public WellElevationCoord Elevation { get; set; }
+
+        [Newtonsoft.Json.JsonProperty("horizontalLocation", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public AbstractWellLocation HorizontalLocation { get; set; }
+
+        [Newtonsoft.Json.JsonProperty("crs", Required = Newtonsoft.Json.Required.Always)]
+        [System.ComponentModel.DataAnnotations.Required]
+        public object Crs { get; set; } = new object();
+
+        [Newtonsoft.Json.JsonProperty("uid", Required = Newtonsoft.Json.Required.Always)]
+        [System.ComponentModel.DataAnnotations.Required(AllowEmptyStrings = true)]
+        [System.ComponentModel.DataAnnotations.StringLength(64)]
+        public string Uid { get; set; }
+
+        public string ToJson()
+        {
+            return Newtonsoft.Json.JsonConvert.SerializeObject(this);
+        }
+
+        public static WellDatum FromJson(string data)
+        {
+            return Newtonsoft.Json.JsonConvert.DeserializeObject<WellDatum>(data);
+        }
+
+    }
+
+    [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "9.11.0.0 (Newtonsoft.Json v9.0.0.0)")]
+    public partial class ObjectAlias
+    {
+        [Newtonsoft.Json.JsonProperty("identifier", Required = Newtonsoft.Json.Required.Always)]
+        [System.ComponentModel.DataAnnotations.Required(AllowEmptyStrings = true)]
+        [System.ComponentModel.DataAnnotations.StringLength(64)]
+        public string Identifier { get; set; }
+
+        [Newtonsoft.Json.JsonProperty("description", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [System.ComponentModel.DataAnnotations.StringLength(2000)]
+        public string Description { get; set; }
+
+        [Newtonsoft.Json.JsonProperty("authority", Required = Newtonsoft.Json.Required.Always)]
+        [System.ComponentModel.DataAnnotations.Required(AllowEmptyStrings = true)]
+        [System.ComponentModel.DataAnnotations.StringLength(64)]
+        public string Authority { get; set; }
+
+        public string ToJson()
+        {
+            return Newtonsoft.Json.JsonConvert.SerializeObject(this);
+        }
+
+        public static ObjectAlias FromJson(string data)
+        {
+            return Newtonsoft.Json.JsonConvert.DeserializeObject<ObjectAlias>(data);
+        }
+
+    }
+
+    [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "9.11.0.0 (Newtonsoft.Json v9.0.0.0)")]
+    public partial class Citation
+    {
+        [Newtonsoft.Json.JsonProperty("title", Required = Newtonsoft.Json.Required.Always)]
+        [System.ComponentModel.DataAnnotations.Required(AllowEmptyStrings = true)]
+        [System.ComponentModel.DataAnnotations.StringLength(2000)]
+        public string Title { get; set; }
+
+        [Newtonsoft.Json.JsonProperty("originator", Required = Newtonsoft.Json.Required.Always)]
+        [System.ComponentModel.DataAnnotations.Required(AllowEmptyStrings = true)]
+        [System.ComponentModel.DataAnnotations.StringLength(64)]
+        public string Originator { get; set; }
+
+        [Newtonsoft.Json.JsonProperty("creation", Required = Newtonsoft.Json.Required.Always)]
+        [System.ComponentModel.DataAnnotations.Required(AllowEmptyStrings = true)]
+        public System.DateTime Creation { get; set; }
+
+        [Newtonsoft.Json.JsonProperty("format", Required = Newtonsoft.Json.Required.Always)]
+        [System.ComponentModel.DataAnnotations.Required(AllowEmptyStrings = true)]
+        [System.ComponentModel.DataAnnotations.StringLength(2000)]
+        public string Format { get; set; }
+
+        [Newtonsoft.Json.JsonProperty("editor", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [System.ComponentModel.DataAnnotations.StringLength(64)]
+        public string Editor { get; set; }
+
+        [Newtonsoft.Json.JsonProperty("lastUpdate", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public System.DateTime? LastUpdate { get; set; }
+
+        [Newtonsoft.Json.JsonProperty("lastUpdateSpecified", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public bool? LastUpdateSpecified { get; set; }
+
+        [Newtonsoft.Json.JsonProperty("versionString", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [System.ComponentModel.DataAnnotations.StringLength(64)]
+        public string VersionString { get; set; }
+
+        [Newtonsoft.Json.JsonProperty("description", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [System.ComponentModel.DataAnnotations.StringLength(2000)]
+        public string Description { get; set; }
+
+        [Newtonsoft.Json.JsonProperty("descriptiveKeywords", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [System.ComponentModel.DataAnnotations.StringLength(2000)]
+        public string DescriptiveKeywords { get; set; }
+
+        public string ToJson()
+        {
+            return Newtonsoft.Json.JsonConvert.SerializeObject(this);
+        }
+
+        public static Citation FromJson(string data)
+        {
+            return Newtonsoft.Json.JsonConvert.DeserializeObject<Citation>(data);
+        }
+
+    }
+
+    [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "9.11.0.0 (Newtonsoft.Json v9.0.0.0)")]
+    public partial class CustomData
+    {
+        [Newtonsoft.Json.JsonProperty("any", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public System.Collections.ObjectModel.ObservableCollection<System.Collections.ObjectModel.ObservableCollection<object>> Any { get; set; }
+
+        [Newtonsoft.Json.JsonProperty("anySpecified", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public bool? AnySpecified { get; set; }
+
+        public string ToJson()
+        {
+            return Newtonsoft.Json.JsonConvert.SerializeObject(this);
+        }
+
+        public static CustomData FromJson(string data)
+        {
+            return Newtonsoft.Json.JsonConvert.DeserializeObject<CustomData>(data);
+        }
+
+    }
+
+    [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "9.11.0.0 (Newtonsoft.Json v9.0.0.0)")]
+    public partial class ExtensionNameValue
+    {
+        [Newtonsoft.Json.JsonProperty("name", Required = Newtonsoft.Json.Required.Always)]
+        [System.ComponentModel.DataAnnotations.Required(AllowEmptyStrings = true)]
+        [System.ComponentModel.DataAnnotations.StringLength(64)]
+        public string Name { get; set; }
+
+        [Newtonsoft.Json.JsonProperty("value", Required = Newtonsoft.Json.Required.Always)]
+        [System.ComponentModel.DataAnnotations.Required]
+        public StringMeasure Value { get; set; } = new StringMeasure();
+
+        [Newtonsoft.Json.JsonProperty("measureClass", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public ExtensionNameValueMeasureClass? MeasureClass { get; set; }
+
+        [Newtonsoft.Json.JsonProperty("measureClassSpecified", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public bool? MeasureClassSpecified { get; set; }
+
+        [Newtonsoft.Json.JsonProperty("dateTime", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public object DateTime { get; set; }
+
+        [Newtonsoft.Json.JsonProperty("index", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public int? Index { get; set; }
+
+        [Newtonsoft.Json.JsonProperty("indexSpecified", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public bool? IndexSpecified { get; set; }
+
+        [Newtonsoft.Json.JsonProperty("description", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [System.ComponentModel.DataAnnotations.StringLength(2000)]
+        public string Description { get; set; }
+
+        public string ToJson()
+        {
+            return Newtonsoft.Json.JsonConvert.SerializeObject(this);
+        }
+
+        public static ExtensionNameValue FromJson(string data)
+        {
+            return Newtonsoft.Json.JsonConvert.DeserializeObject<ExtensionNameValue>(data);
+        }
+
+    }
+
+    [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "9.11.0.0 (Newtonsoft.Json v9.0.0.0)")]
+    public partial class PlaneAngleMeasure
+    {
+        [Newtonsoft.Json.JsonProperty("uom", Required = Newtonsoft.Json.Required.Always)]
+        public PlaneAngleMeasureUom Uom { get; set; }
+
+        [Newtonsoft.Json.JsonProperty("value", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public double? Value { get; set; }
+
+        public string ToJson()
+        {
+            return Newtonsoft.Json.JsonConvert.SerializeObject(this);
+        }
+
+        public static PlaneAngleMeasure FromJson(string data)
+        {
+            return Newtonsoft.Json.JsonConvert.DeserializeObject<PlaneAngleMeasure>(data);
+        }
+
+    }
+
+    [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "9.11.0.0 (Newtonsoft.Json v9.0.0.0)")]
+    public partial class DistanceNorthSouth
+    {
+        [Newtonsoft.Json.JsonProperty("uom", Required = Newtonsoft.Json.Required.Always)]
+        public DistanceNorthSouthUom Uom { get; set; }
+
+        [Newtonsoft.Json.JsonProperty("reference", Required = Newtonsoft.Json.Required.Always)]
+        public DistanceNorthSouthReference Reference { get; set; }
+
+        [Newtonsoft.Json.JsonProperty("value", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public double? Value { get; set; }
+
+        public string ToJson()
+        {
+            return Newtonsoft.Json.JsonConvert.SerializeObject(this);
+        }
+
+        public static DistanceNorthSouth FromJson(string data)
+        {
+            return Newtonsoft.Json.JsonConvert.DeserializeObject<DistanceNorthSouth>(data);
+        }
+
+    }
+
+    [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "9.11.0.0 (Newtonsoft.Json v9.0.0.0)")]
+    public partial class DistanceEastWest
+    {
+        [Newtonsoft.Json.JsonProperty("uom", Required = Newtonsoft.Json.Required.Always)]
+        public DistanceEastWestUom Uom { get; set; }
+
+        [Newtonsoft.Json.JsonProperty("reference", Required = Newtonsoft.Json.Required.Always)]
+        public DistanceEastWestReference Reference { get; set; }
+
+        [Newtonsoft.Json.JsonProperty("value", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public double? Value { get; set; }
+
+        public string ToJson()
+        {
+            return Newtonsoft.Json.JsonConvert.SerializeObject(this);
+        }
+
+        public static DistanceEastWest FromJson(string data)
+        {
+            return Newtonsoft.Json.JsonConvert.DeserializeObject<DistanceEastWest>(data);
+        }
+
+    }
+
+    [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "9.11.0.0 (Newtonsoft.Json v9.0.0.0)")]
+    public partial class MeasuredDepthCoord
+    {
+        [Newtonsoft.Json.JsonProperty("uom", Required = Newtonsoft.Json.Required.Always)]
+        public MeasuredDepthCoordUom Uom { get; set; }
+
+        [Newtonsoft.Json.JsonProperty("datum", Required = Newtonsoft.Json.Required.Always)]
+        [System.ComponentModel.DataAnnotations.Required(AllowEmptyStrings = true)]
+        [System.ComponentModel.DataAnnotations.StringLength(64)]
+        public string Datum { get; set; }
+
+        [Newtonsoft.Json.JsonProperty("value", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public double? Value { get; set; }
+
+        public string ToJson()
+        {
+            return Newtonsoft.Json.JsonConvert.SerializeObject(this);
+        }
+
+        public static MeasuredDepthCoord FromJson(string data)
+        {
+            return Newtonsoft.Json.JsonConvert.DeserializeObject<MeasuredDepthCoord>(data);
+        }
+
+    }
+
+    [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "9.11.0.0 (Newtonsoft.Json v9.0.0.0)")]
+    public partial class RefWellbore
+    {
+        [Newtonsoft.Json.JsonProperty("wellboreReference", Required = Newtonsoft.Json.Required.Always)]
+        [System.ComponentModel.DataAnnotations.Required(AllowEmptyStrings = true)]
+        [System.ComponentModel.DataAnnotations.StringLength(64)]
+        public string WellboreReference { get; set; }
+
+        [Newtonsoft.Json.JsonProperty("wellParent", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [System.ComponentModel.DataAnnotations.StringLength(64)]
+        public string WellParent { get; set; }
+
+        public string ToJson()
+        {
+            return Newtonsoft.Json.JsonConvert.SerializeObject(this);
+        }
+
+        public static RefWellbore FromJson(string data)
+        {
+            return Newtonsoft.Json.JsonConvert.DeserializeObject<RefWellbore>(data);
+        }
+
+    }
+
+    [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "9.11.0.0 (Newtonsoft.Json v9.0.0.0)")]
+    public partial class RefWellboreRig
+    {
+        [Newtonsoft.Json.JsonProperty("rigReference", Required = Newtonsoft.Json.Required.Always)]
+        [System.ComponentModel.DataAnnotations.Required(AllowEmptyStrings = true)]
+        [System.ComponentModel.DataAnnotations.StringLength(64)]
+        public string RigReference { get; set; }
+
+        [Newtonsoft.Json.JsonProperty("wellboreParent", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [System.ComponentModel.DataAnnotations.StringLength(64)]
+        public string WellboreParent { get; set; }
+
+        [Newtonsoft.Json.JsonProperty("wellParent", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [System.ComponentModel.DataAnnotations.StringLength(64)]
+        public string WellParent { get; set; }
+
+        public string ToJson()
+        {
+            return Newtonsoft.Json.JsonConvert.SerializeObject(this);
+        }
+
+        public static RefWellboreRig FromJson(string data)
+        {
+            return Newtonsoft.Json.JsonConvert.DeserializeObject<RefWellboreRig>(data);
+        }
+
+    }
+
+    [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "9.11.0.0 (Newtonsoft.Json v9.0.0.0)")]
+    public partial class StringMeasure
+    {
+        [Newtonsoft.Json.JsonProperty("uom", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public StringMeasureUom? Uom { get; set; }
+
+        [Newtonsoft.Json.JsonProperty("uomSpecified", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public bool? UomSpecified { get; set; }
+
+        [Newtonsoft.Json.JsonProperty("value", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public string Value { get; set; }
+
+        public string ToJson()
+        {
+            return Newtonsoft.Json.JsonConvert.SerializeObject(this);
+        }
+
+        public static StringMeasure FromJson(string data)
+        {
+            return Newtonsoft.Json.JsonConvert.DeserializeObject<StringMeasure>(data);
+        }
+
+    }
+
+    [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "9.11.0.0 (Newtonsoft.Json v9.0.0.0)")]
+    public partial class IDataObject
+    {
+        [Newtonsoft.Json.JsonProperty("resource", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public IResource Resource { get; set; }
+
+        [Newtonsoft.Json.JsonProperty("contentEncoding", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public string ContentEncoding { get; set; }
+
+        [Newtonsoft.Json.JsonProperty("data", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public byte[] Data { get; set; }
+
+        [Newtonsoft.Json.JsonProperty("schema", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public Schema Schema { get; set; }
+
+        public string ToJson()
+        {
+            return Newtonsoft.Json.JsonConvert.SerializeObject(this);
+        }
+
+        public static IDataObject FromJson(string data)
+        {
+            return Newtonsoft.Json.JsonConvert.DeserializeObject<IDataObject>(data);
+        }
+
+    }
+
+    [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "9.11.0.0 (Newtonsoft.Json v9.0.0.0)")]
+    public partial class IResource
+    {
+        [Newtonsoft.Json.JsonProperty("uri", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public string Uri { get; set; }
+
+        [Newtonsoft.Json.JsonProperty("contentType", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public string ContentType { get; set; }
+
+        [Newtonsoft.Json.JsonProperty("name", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public string Name { get; set; }
+
+        [Newtonsoft.Json.JsonProperty("channelSubscribable", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public bool? ChannelSubscribable { get; set; }
+
+        [Newtonsoft.Json.JsonProperty("customData", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public System.Collections.Generic.Dictionary<string, string> CustomData { get; set; }
+
+        [Newtonsoft.Json.JsonProperty("resourceType", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public string ResourceType { get; set; }
+
+        [Newtonsoft.Json.JsonProperty("childCount", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public int? ChildCount { get; set; }
+
+        [Newtonsoft.Json.JsonProperty("uuid", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public string Uuid { get; set; }
+
+        [Newtonsoft.Json.JsonProperty("lastChanged", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public long? LastChanged { get; set; }
+
+        [Newtonsoft.Json.JsonProperty("objectNotifiable", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public bool? ObjectNotifiable { get; set; }
+
+        [Newtonsoft.Json.JsonProperty("schema", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public Schema Schema { get; set; }
+
+        public string ToJson()
+        {
+            return Newtonsoft.Json.JsonConvert.SerializeObject(this);
+        }
+
+        public static IResource FromJson(string data)
+        {
+            return Newtonsoft.Json.JsonConvert.DeserializeObject<IResource>(data);
+        }
+
+    }
+
+    [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "9.11.0.0 (Newtonsoft.Json v9.0.0.0)")]
+    public partial class Schema
+    {
+        [Newtonsoft.Json.JsonProperty("tag", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public SchemaTag? Tag { get; set; }
+
+        [Newtonsoft.Json.JsonProperty("name", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public string Name { get; set; }
+
+        public string ToJson()
+        {
+            return Newtonsoft.Json.JsonConvert.SerializeObject(this);
+        }
+
+        public static Schema FromJson(string data)
+        {
+            return Newtonsoft.Json.JsonConvert.DeserializeObject<Schema>(data);
+        }
+
+    }
+
+    [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "9.11.0.0 (Newtonsoft.Json v9.0.0.0)")]
     public partial class WellboreDto
     {
         [Newtonsoft.Json.JsonProperty("id", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
@@ -1307,6 +2278,4519 @@ namespace YARUS.API.Models
         {
             return Newtonsoft.Json.JsonConvert.DeserializeObject<CreateWellTubularInput>(data);
         }
+
+    }
+
+    [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "9.11.0.0 (Newtonsoft.Json v9.0.0.0)")]
+    public enum WellStatusWell
+    {
+        _0 = 0,
+
+        _1 = 1,
+
+        _2 = 2,
+
+        _3 = 3,
+
+        _4 = 4,
+
+        _5 = 5,
+
+        _6 = 6,
+
+        _7 = 7,
+
+        _8 = 8,
+
+        _9 = 9,
+
+        _10 = 10,
+
+        _11 = 11,
+
+        _12 = 12,
+
+        _13 = 13,
+
+        _14 = 14,
+
+        _15 = 15,
+
+        _16 = 16,
+
+    }
+
+    [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "9.11.0.0 (Newtonsoft.Json v9.0.0.0)")]
+    public enum WellPurposeWell
+    {
+        _0 = 0,
+
+        _1 = 1,
+
+        _2 = 2,
+
+        _3 = 3,
+
+        _4 = 4,
+
+        _5 = 5,
+
+        _6 = 6,
+
+        _7 = 7,
+
+        _8 = 8,
+
+        _9 = 9,
+
+        _10 = 10,
+
+        _11 = 11,
+
+        _12 = 12,
+
+        _13 = 13,
+
+        _14 = 14,
+
+        _15 = 15,
+
+        _16 = 16,
+
+        _17 = 17,
+
+        _18 = 18,
+
+        _19 = 19,
+
+        _20 = 20,
+
+        _21 = 21,
+
+        _22 = 22,
+
+        _23 = 23,
+
+    }
+
+    [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "9.11.0.0 (Newtonsoft.Json v9.0.0.0)")]
+    public enum WellFluidWell
+    {
+        _0 = 0,
+
+        _1 = 1,
+
+        _2 = 2,
+
+        _3 = 3,
+
+        _4 = 4,
+
+        _5 = 5,
+
+        _6 = 6,
+
+        _7 = 7,
+
+        _8 = 8,
+
+        _9 = 9,
+
+        _10 = 10,
+
+        _11 = 11,
+
+        _12 = 12,
+
+        _13 = 13,
+
+    }
+
+    [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "9.11.0.0 (Newtonsoft.Json v9.0.0.0)")]
+    public enum WellDirectionWell
+    {
+        _0 = 0,
+
+        _1 = 1,
+
+        _2 = 2,
+
+        _3 = 3,
+
+    }
+
+    [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "9.11.0.0 (Newtonsoft.Json v9.0.0.0)")]
+    public enum WellExistenceKind
+    {
+        _0 = 0,
+
+        _1 = 1,
+
+        _2 = 2,
+
+    }
+
+    [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "9.11.0.0 (Newtonsoft.Json v9.0.0.0)")]
+    public enum DimensionlessMeasureUom
+    {
+        _0 = 0,
+
+        _1 = 1,
+
+        _2 = 2,
+
+        _3 = 3,
+
+        _4 = 4,
+
+        _5 = 5,
+
+        _6 = 6,
+
+        _7 = 7,
+
+        _8 = 8,
+
+        _9 = 9,
+
+        _10 = 10,
+
+        _11 = 11,
+
+        _12 = 12,
+
+        _13 = 13,
+
+        _14 = 14,
+
+        _15 = 15,
+
+    }
+
+    [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "9.11.0.0 (Newtonsoft.Json v9.0.0.0)")]
+    public enum LengthMeasureUom
+    {
+        _0 = 0,
+
+        _1 = 1,
+
+        _2 = 2,
+
+        _3 = 3,
+
+        _4 = 4,
+
+        _5 = 5,
+
+        _6 = 6,
+
+        _7 = 7,
+
+        _8 = 8,
+
+        _9 = 9,
+
+        _10 = 10,
+
+        _11 = 11,
+
+        _12 = 12,
+
+        _13 = 13,
+
+        _14 = 14,
+
+        _15 = 15,
+
+        _16 = 16,
+
+        _17 = 17,
+
+        _18 = 18,
+
+        _19 = 19,
+
+        _20 = 20,
+
+        _21 = 21,
+
+        _22 = 22,
+
+        _23 = 23,
+
+        _24 = 24,
+
+        _25 = 25,
+
+        _26 = 26,
+
+        _27 = 27,
+
+        _28 = 28,
+
+        _29 = 29,
+
+        _30 = 30,
+
+        _31 = 31,
+
+        _32 = 32,
+
+        _33 = 33,
+
+        _34 = 34,
+
+        _35 = 35,
+
+        _36 = 36,
+
+        _37 = 37,
+
+        _38 = 38,
+
+        _39 = 39,
+
+        _40 = 40,
+
+        _41 = 41,
+
+        _42 = 42,
+
+        _43 = 43,
+
+        _44 = 44,
+
+        _45 = 45,
+
+        _46 = 46,
+
+        _47 = 47,
+
+        _48 = 48,
+
+        _49 = 49,
+
+        _50 = 50,
+
+        _51 = 51,
+
+        _52 = 52,
+
+        _53 = 53,
+
+        _54 = 54,
+
+        _55 = 55,
+
+        _56 = 56,
+
+        _57 = 57,
+
+        _58 = 58,
+
+        _59 = 59,
+
+        _60 = 60,
+
+        _61 = 61,
+
+        _62 = 62,
+
+        _63 = 63,
+
+        _64 = 64,
+
+        _65 = 65,
+
+        _66 = 66,
+
+        _67 = 67,
+
+        _68 = 68,
+
+        _69 = 69,
+
+        _70 = 70,
+
+        _71 = 71,
+
+        _72 = 72,
+
+        _73 = 73,
+
+        _74 = 74,
+
+        _75 = 75,
+
+        _76 = 76,
+
+        _77 = 77,
+
+        _78 = 78,
+
+        _79 = 79,
+
+        _80 = 80,
+
+        _81 = 81,
+
+        _82 = 82,
+
+    }
+
+    [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "9.11.0.0 (Newtonsoft.Json v9.0.0.0)")]
+    public enum PublicLandSurveySystemPrincipalMeridian
+    {
+        _0 = 0,
+
+        _1 = 1,
+
+        _2 = 2,
+
+        _3 = 3,
+
+        _4 = 4,
+
+        _5 = 5,
+
+        _6 = 6,
+
+        _7 = 7,
+
+        _8 = 8,
+
+        _9 = 9,
+
+        _10 = 10,
+
+        _11 = 11,
+
+        _12 = 12,
+
+        _13 = 13,
+
+        _14 = 14,
+
+        _15 = 15,
+
+        _16 = 16,
+
+        _17 = 17,
+
+        _18 = 18,
+
+        _19 = 19,
+
+        _20 = 20,
+
+        _21 = 21,
+
+        _22 = 22,
+
+        _23 = 23,
+
+        _24 = 24,
+
+        _25 = 25,
+
+        _26 = 26,
+
+        _27 = 27,
+
+        _28 = 28,
+
+        _29 = 29,
+
+        _30 = 30,
+
+        _31 = 31,
+
+        _32 = 32,
+
+        _33 = 33,
+
+        _34 = 34,
+
+        _35 = 35,
+
+    }
+
+    [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "9.11.0.0 (Newtonsoft.Json v9.0.0.0)")]
+    public enum PublicLandSurveySystemRangeDir
+    {
+        _0 = 0,
+
+        _1 = 1,
+
+    }
+
+    [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "9.11.0.0 (Newtonsoft.Json v9.0.0.0)")]
+    public enum PublicLandSurveySystemTownshipDir
+    {
+        _0 = 0,
+
+        _1 = 1,
+
+    }
+
+    [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "9.11.0.0 (Newtonsoft.Json v9.0.0.0)")]
+    public enum WellElevationCoordUom
+    {
+        _0 = 0,
+
+        _1 = 1,
+
+        _2 = 2,
+
+        _3 = 3,
+
+        _4 = 4,
+
+        _5 = 5,
+
+        _6 = 6,
+
+        _7 = 7,
+
+        _8 = 8,
+
+        _9 = 9,
+
+        _10 = 10,
+
+        _11 = 11,
+
+        _12 = 12,
+
+        _13 = 13,
+
+        _14 = 14,
+
+        _15 = 15,
+
+        _16 = 16,
+
+        _17 = 17,
+
+        _18 = 18,
+
+        _19 = 19,
+
+        _20 = 20,
+
+        _21 = 21,
+
+        _22 = 22,
+
+        _23 = 23,
+
+        _24 = 24,
+
+        _25 = 25,
+
+        _26 = 26,
+
+        _27 = 27,
+
+        _28 = 28,
+
+        _29 = 29,
+
+        _30 = 30,
+
+        _31 = 31,
+
+        _32 = 32,
+
+        _33 = 33,
+
+        _34 = 34,
+
+        _35 = 35,
+
+        _36 = 36,
+
+        _37 = 37,
+
+        _38 = 38,
+
+        _39 = 39,
+
+        _40 = 40,
+
+        _41 = 41,
+
+        _42 = 42,
+
+        _43 = 43,
+
+        _44 = 44,
+
+        _45 = 45,
+
+        _46 = 46,
+
+        _47 = 47,
+
+        _48 = 48,
+
+        _49 = 49,
+
+        _50 = 50,
+
+        _51 = 51,
+
+        _52 = 52,
+
+        _53 = 53,
+
+        _54 = 54,
+
+        _55 = 55,
+
+        _56 = 56,
+
+        _57 = 57,
+
+        _58 = 58,
+
+        _59 = 59,
+
+        _60 = 60,
+
+        _61 = 61,
+
+        _62 = 62,
+
+        _63 = 63,
+
+        _64 = 64,
+
+        _65 = 65,
+
+        _66 = 66,
+
+        _67 = 67,
+
+        _68 = 68,
+
+        _69 = 69,
+
+        _70 = 70,
+
+        _71 = 71,
+
+        _72 = 72,
+
+        _73 = 73,
+
+        _74 = 74,
+
+        _75 = 75,
+
+        _76 = 76,
+
+        _77 = 77,
+
+        _78 = 78,
+
+        _79 = 79,
+
+        _80 = 80,
+
+        _81 = 81,
+
+        _82 = 82,
+
+    }
+
+    [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "9.11.0.0 (Newtonsoft.Json v9.0.0.0)")]
+    public enum WellDatumCode
+    {
+        _0 = 0,
+
+        _1 = 1,
+
+        _2 = 2,
+
+        _3 = 3,
+
+        _4 = 4,
+
+        _5 = 5,
+
+        _6 = 6,
+
+        _7 = 7,
+
+        _8 = 8,
+
+        _9 = 9,
+
+        _10 = 10,
+
+        _11 = 11,
+
+        _12 = 12,
+
+        _13 = 13,
+
+        _14 = 14,
+
+        _15 = 15,
+
+    }
+
+    [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "9.11.0.0 (Newtonsoft.Json v9.0.0.0)")]
+    public enum ExtensionNameValueMeasureClass
+    {
+        _0 = 0,
+
+        _1 = 1,
+
+        _2 = 2,
+
+        _3 = 3,
+
+        _4 = 4,
+
+        _5 = 5,
+
+        _6 = 6,
+
+        _7 = 7,
+
+        _8 = 8,
+
+        _9 = 9,
+
+        _10 = 10,
+
+        _11 = 11,
+
+        _12 = 12,
+
+        _13 = 13,
+
+        _14 = 14,
+
+        _15 = 15,
+
+        _16 = 16,
+
+        _17 = 17,
+
+        _18 = 18,
+
+        _19 = 19,
+
+        _20 = 20,
+
+        _21 = 21,
+
+        _22 = 22,
+
+        _23 = 23,
+
+        _24 = 24,
+
+        _25 = 25,
+
+        _26 = 26,
+
+        _27 = 27,
+
+        _28 = 28,
+
+        _29 = 29,
+
+        _30 = 30,
+
+        _31 = 31,
+
+        _32 = 32,
+
+        _33 = 33,
+
+        _34 = 34,
+
+        _35 = 35,
+
+        _36 = 36,
+
+        _37 = 37,
+
+        _38 = 38,
+
+        _39 = 39,
+
+        _40 = 40,
+
+        _41 = 41,
+
+        _42 = 42,
+
+        _43 = 43,
+
+        _44 = 44,
+
+        _45 = 45,
+
+        _46 = 46,
+
+        _47 = 47,
+
+        _48 = 48,
+
+        _49 = 49,
+
+        _50 = 50,
+
+        _51 = 51,
+
+        _52 = 52,
+
+        _53 = 53,
+
+        _54 = 54,
+
+        _55 = 55,
+
+        _56 = 56,
+
+        _57 = 57,
+
+        _58 = 58,
+
+        _59 = 59,
+
+        _60 = 60,
+
+        _61 = 61,
+
+        _62 = 62,
+
+        _63 = 63,
+
+        _64 = 64,
+
+        _65 = 65,
+
+        _66 = 66,
+
+        _67 = 67,
+
+        _68 = 68,
+
+        _69 = 69,
+
+        _70 = 70,
+
+        _71 = 71,
+
+        _72 = 72,
+
+        _73 = 73,
+
+        _74 = 74,
+
+        _75 = 75,
+
+        _76 = 76,
+
+        _77 = 77,
+
+        _78 = 78,
+
+        _79 = 79,
+
+        _80 = 80,
+
+        _81 = 81,
+
+        _82 = 82,
+
+        _83 = 83,
+
+        _84 = 84,
+
+        _85 = 85,
+
+        _86 = 86,
+
+        _87 = 87,
+
+        _88 = 88,
+
+        _89 = 89,
+
+        _90 = 90,
+
+        _91 = 91,
+
+        _92 = 92,
+
+        _93 = 93,
+
+        _94 = 94,
+
+        _95 = 95,
+
+        _96 = 96,
+
+        _97 = 97,
+
+        _98 = 98,
+
+        _99 = 99,
+
+        _100 = 100,
+
+        _101 = 101,
+
+        _102 = 102,
+
+        _103 = 103,
+
+        _104 = 104,
+
+        _105 = 105,
+
+        _106 = 106,
+
+        _107 = 107,
+
+        _108 = 108,
+
+        _109 = 109,
+
+        _110 = 110,
+
+        _111 = 111,
+
+        _112 = 112,
+
+        _113 = 113,
+
+        _114 = 114,
+
+        _115 = 115,
+
+        _116 = 116,
+
+        _117 = 117,
+
+        _118 = 118,
+
+        _119 = 119,
+
+        _120 = 120,
+
+        _121 = 121,
+
+        _122 = 122,
+
+        _123 = 123,
+
+        _124 = 124,
+
+        _125 = 125,
+
+        _126 = 126,
+
+        _127 = 127,
+
+        _128 = 128,
+
+        _129 = 129,
+
+        _130 = 130,
+
+        _131 = 131,
+
+        _132 = 132,
+
+        _133 = 133,
+
+        _134 = 134,
+
+        _135 = 135,
+
+        _136 = 136,
+
+        _137 = 137,
+
+        _138 = 138,
+
+        _139 = 139,
+
+        _140 = 140,
+
+        _141 = 141,
+
+        _142 = 142,
+
+        _143 = 143,
+
+        _144 = 144,
+
+        _145 = 145,
+
+        _146 = 146,
+
+        _147 = 147,
+
+        _148 = 148,
+
+        _149 = 149,
+
+        _150 = 150,
+
+        _151 = 151,
+
+        _152 = 152,
+
+        _153 = 153,
+
+        _154 = 154,
+
+        _155 = 155,
+
+        _156 = 156,
+
+        _157 = 157,
+
+        _158 = 158,
+
+        _159 = 159,
+
+        _160 = 160,
+
+        _161 = 161,
+
+        _162 = 162,
+
+        _163 = 163,
+
+        _164 = 164,
+
+        _165 = 165,
+
+        _166 = 166,
+
+        _167 = 167,
+
+        _168 = 168,
+
+        _169 = 169,
+
+        _170 = 170,
+
+        _171 = 171,
+
+        _172 = 172,
+
+        _173 = 173,
+
+        _174 = 174,
+
+        _175 = 175,
+
+        _176 = 176,
+
+        _177 = 177,
+
+        _178 = 178,
+
+        _179 = 179,
+
+        _180 = 180,
+
+        _181 = 181,
+
+        _182 = 182,
+
+        _183 = 183,
+
+    }
+
+    [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "9.11.0.0 (Newtonsoft.Json v9.0.0.0)")]
+    public enum PlaneAngleMeasureUom
+    {
+        _0 = 0,
+
+        _1 = 1,
+
+        _2 = 2,
+
+        _3 = 3,
+
+        _4 = 4,
+
+        _5 = 5,
+
+        _6 = 6,
+
+        _7 = 7,
+
+        _8 = 8,
+
+        _9 = 9,
+
+        _10 = 10,
+
+        _11 = 11,
+
+        _12 = 12,
+
+        _13 = 13,
+
+    }
+
+    [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "9.11.0.0 (Newtonsoft.Json v9.0.0.0)")]
+    public enum DistanceNorthSouthUom
+    {
+        _0 = 0,
+
+        _1 = 1,
+
+        _2 = 2,
+
+        _3 = 3,
+
+        _4 = 4,
+
+        _5 = 5,
+
+        _6 = 6,
+
+        _7 = 7,
+
+        _8 = 8,
+
+        _9 = 9,
+
+        _10 = 10,
+
+        _11 = 11,
+
+        _12 = 12,
+
+        _13 = 13,
+
+        _14 = 14,
+
+        _15 = 15,
+
+        _16 = 16,
+
+        _17 = 17,
+
+        _18 = 18,
+
+        _19 = 19,
+
+        _20 = 20,
+
+        _21 = 21,
+
+        _22 = 22,
+
+        _23 = 23,
+
+        _24 = 24,
+
+        _25 = 25,
+
+        _26 = 26,
+
+        _27 = 27,
+
+        _28 = 28,
+
+        _29 = 29,
+
+        _30 = 30,
+
+        _31 = 31,
+
+        _32 = 32,
+
+        _33 = 33,
+
+        _34 = 34,
+
+        _35 = 35,
+
+        _36 = 36,
+
+        _37 = 37,
+
+        _38 = 38,
+
+        _39 = 39,
+
+        _40 = 40,
+
+        _41 = 41,
+
+        _42 = 42,
+
+        _43 = 43,
+
+        _44 = 44,
+
+        _45 = 45,
+
+        _46 = 46,
+
+        _47 = 47,
+
+        _48 = 48,
+
+        _49 = 49,
+
+        _50 = 50,
+
+        _51 = 51,
+
+        _52 = 52,
+
+        _53 = 53,
+
+        _54 = 54,
+
+        _55 = 55,
+
+        _56 = 56,
+
+        _57 = 57,
+
+        _58 = 58,
+
+        _59 = 59,
+
+        _60 = 60,
+
+        _61 = 61,
+
+        _62 = 62,
+
+        _63 = 63,
+
+        _64 = 64,
+
+        _65 = 65,
+
+        _66 = 66,
+
+        _67 = 67,
+
+        _68 = 68,
+
+        _69 = 69,
+
+        _70 = 70,
+
+        _71 = 71,
+
+        _72 = 72,
+
+        _73 = 73,
+
+        _74 = 74,
+
+        _75 = 75,
+
+        _76 = 76,
+
+        _77 = 77,
+
+        _78 = 78,
+
+        _79 = 79,
+
+        _80 = 80,
+
+        _81 = 81,
+
+        _82 = 82,
+
+    }
+
+    [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "9.11.0.0 (Newtonsoft.Json v9.0.0.0)")]
+    public enum DistanceNorthSouthReference
+    {
+        _0 = 0,
+
+        _1 = 1,
+
+    }
+
+    [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "9.11.0.0 (Newtonsoft.Json v9.0.0.0)")]
+    public enum DistanceEastWestUom
+    {
+        _0 = 0,
+
+        _1 = 1,
+
+        _2 = 2,
+
+        _3 = 3,
+
+        _4 = 4,
+
+        _5 = 5,
+
+        _6 = 6,
+
+        _7 = 7,
+
+        _8 = 8,
+
+        _9 = 9,
+
+        _10 = 10,
+
+        _11 = 11,
+
+        _12 = 12,
+
+        _13 = 13,
+
+        _14 = 14,
+
+        _15 = 15,
+
+        _16 = 16,
+
+        _17 = 17,
+
+        _18 = 18,
+
+        _19 = 19,
+
+        _20 = 20,
+
+        _21 = 21,
+
+        _22 = 22,
+
+        _23 = 23,
+
+        _24 = 24,
+
+        _25 = 25,
+
+        _26 = 26,
+
+        _27 = 27,
+
+        _28 = 28,
+
+        _29 = 29,
+
+        _30 = 30,
+
+        _31 = 31,
+
+        _32 = 32,
+
+        _33 = 33,
+
+        _34 = 34,
+
+        _35 = 35,
+
+        _36 = 36,
+
+        _37 = 37,
+
+        _38 = 38,
+
+        _39 = 39,
+
+        _40 = 40,
+
+        _41 = 41,
+
+        _42 = 42,
+
+        _43 = 43,
+
+        _44 = 44,
+
+        _45 = 45,
+
+        _46 = 46,
+
+        _47 = 47,
+
+        _48 = 48,
+
+        _49 = 49,
+
+        _50 = 50,
+
+        _51 = 51,
+
+        _52 = 52,
+
+        _53 = 53,
+
+        _54 = 54,
+
+        _55 = 55,
+
+        _56 = 56,
+
+        _57 = 57,
+
+        _58 = 58,
+
+        _59 = 59,
+
+        _60 = 60,
+
+        _61 = 61,
+
+        _62 = 62,
+
+        _63 = 63,
+
+        _64 = 64,
+
+        _65 = 65,
+
+        _66 = 66,
+
+        _67 = 67,
+
+        _68 = 68,
+
+        _69 = 69,
+
+        _70 = 70,
+
+        _71 = 71,
+
+        _72 = 72,
+
+        _73 = 73,
+
+        _74 = 74,
+
+        _75 = 75,
+
+        _76 = 76,
+
+        _77 = 77,
+
+        _78 = 78,
+
+        _79 = 79,
+
+        _80 = 80,
+
+        _81 = 81,
+
+        _82 = 82,
+
+    }
+
+    [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "9.11.0.0 (Newtonsoft.Json v9.0.0.0)")]
+    public enum DistanceEastWestReference
+    {
+        _0 = 0,
+
+        _1 = 1,
+
+    }
+
+    [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "9.11.0.0 (Newtonsoft.Json v9.0.0.0)")]
+    public enum MeasuredDepthCoordUom
+    {
+        _0 = 0,
+
+        _1 = 1,
+
+        _2 = 2,
+
+        _3 = 3,
+
+        _4 = 4,
+
+        _5 = 5,
+
+        _6 = 6,
+
+        _7 = 7,
+
+        _8 = 8,
+
+        _9 = 9,
+
+        _10 = 10,
+
+        _11 = 11,
+
+        _12 = 12,
+
+        _13 = 13,
+
+        _14 = 14,
+
+        _15 = 15,
+
+        _16 = 16,
+
+        _17 = 17,
+
+        _18 = 18,
+
+        _19 = 19,
+
+        _20 = 20,
+
+        _21 = 21,
+
+        _22 = 22,
+
+        _23 = 23,
+
+        _24 = 24,
+
+        _25 = 25,
+
+        _26 = 26,
+
+        _27 = 27,
+
+        _28 = 28,
+
+        _29 = 29,
+
+        _30 = 30,
+
+        _31 = 31,
+
+        _32 = 32,
+
+        _33 = 33,
+
+        _34 = 34,
+
+        _35 = 35,
+
+        _36 = 36,
+
+        _37 = 37,
+
+        _38 = 38,
+
+        _39 = 39,
+
+        _40 = 40,
+
+        _41 = 41,
+
+        _42 = 42,
+
+        _43 = 43,
+
+        _44 = 44,
+
+        _45 = 45,
+
+        _46 = 46,
+
+        _47 = 47,
+
+        _48 = 48,
+
+        _49 = 49,
+
+        _50 = 50,
+
+        _51 = 51,
+
+        _52 = 52,
+
+        _53 = 53,
+
+        _54 = 54,
+
+        _55 = 55,
+
+        _56 = 56,
+
+        _57 = 57,
+
+        _58 = 58,
+
+        _59 = 59,
+
+        _60 = 60,
+
+        _61 = 61,
+
+        _62 = 62,
+
+        _63 = 63,
+
+        _64 = 64,
+
+        _65 = 65,
+
+        _66 = 66,
+
+        _67 = 67,
+
+        _68 = 68,
+
+        _69 = 69,
+
+        _70 = 70,
+
+        _71 = 71,
+
+        _72 = 72,
+
+        _73 = 73,
+
+        _74 = 74,
+
+        _75 = 75,
+
+        _76 = 76,
+
+        _77 = 77,
+
+        _78 = 78,
+
+        _79 = 79,
+
+        _80 = 80,
+
+        _81 = 81,
+
+        _82 = 82,
+
+    }
+
+    [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "9.11.0.0 (Newtonsoft.Json v9.0.0.0)")]
+    public enum StringMeasureUom
+    {
+        _0 = 0,
+
+        _1 = 1,
+
+        _2 = 2,
+
+        _3 = 3,
+
+        _4 = 4,
+
+        _5 = 5,
+
+        _6 = 6,
+
+        _7 = 7,
+
+        _8 = 8,
+
+        _9 = 9,
+
+        _10 = 10,
+
+        _11 = 11,
+
+        _12 = 12,
+
+        _13 = 13,
+
+        _14 = 14,
+
+        _15 = 15,
+
+        _16 = 16,
+
+        _17 = 17,
+
+        _18 = 18,
+
+        _19 = 19,
+
+        _20 = 20,
+
+        _21 = 21,
+
+        _22 = 22,
+
+        _23 = 23,
+
+        _24 = 24,
+
+        _25 = 25,
+
+        _26 = 26,
+
+        _27 = 27,
+
+        _28 = 28,
+
+        _29 = 29,
+
+        _30 = 30,
+
+        _31 = 31,
+
+        _32 = 32,
+
+        _33 = 33,
+
+        _34 = 34,
+
+        _35 = 35,
+
+        _36 = 36,
+
+        _37 = 37,
+
+        _38 = 38,
+
+        _39 = 39,
+
+        _40 = 40,
+
+        _41 = 41,
+
+        _42 = 42,
+
+        _43 = 43,
+
+        _44 = 44,
+
+        _45 = 45,
+
+        _46 = 46,
+
+        _47 = 47,
+
+        _48 = 48,
+
+        _49 = 49,
+
+        _50 = 50,
+
+        _51 = 51,
+
+        _52 = 52,
+
+        _53 = 53,
+
+        _54 = 54,
+
+        _55 = 55,
+
+        _56 = 56,
+
+        _57 = 57,
+
+        _58 = 58,
+
+        _59 = 59,
+
+        _60 = 60,
+
+        _61 = 61,
+
+        _62 = 62,
+
+        _63 = 63,
+
+        _64 = 64,
+
+        _65 = 65,
+
+        _66 = 66,
+
+        _67 = 67,
+
+        _68 = 68,
+
+        _69 = 69,
+
+        _70 = 70,
+
+        _71 = 71,
+
+        _72 = 72,
+
+        _73 = 73,
+
+        _74 = 74,
+
+        _75 = 75,
+
+        _76 = 76,
+
+        _77 = 77,
+
+        _78 = 78,
+
+        _79 = 79,
+
+        _80 = 80,
+
+        _81 = 81,
+
+        _82 = 82,
+
+        _83 = 83,
+
+        _84 = 84,
+
+        _85 = 85,
+
+        _86 = 86,
+
+        _87 = 87,
+
+        _88 = 88,
+
+        _89 = 89,
+
+        _90 = 90,
+
+        _91 = 91,
+
+        _92 = 92,
+
+        _93 = 93,
+
+        _94 = 94,
+
+        _95 = 95,
+
+        _96 = 96,
+
+        _97 = 97,
+
+        _98 = 98,
+
+        _99 = 99,
+
+        _100 = 100,
+
+        _101 = 101,
+
+        _102 = 102,
+
+        _103 = 103,
+
+        _104 = 104,
+
+        _105 = 105,
+
+        _106 = 106,
+
+        _107 = 107,
+
+        _108 = 108,
+
+        _109 = 109,
+
+        _110 = 110,
+
+        _111 = 111,
+
+        _112 = 112,
+
+        _113 = 113,
+
+        _114 = 114,
+
+        _115 = 115,
+
+        _116 = 116,
+
+        _117 = 117,
+
+        _118 = 118,
+
+        _119 = 119,
+
+        _120 = 120,
+
+        _121 = 121,
+
+        _122 = 122,
+
+        _123 = 123,
+
+        _124 = 124,
+
+        _125 = 125,
+
+        _126 = 126,
+
+        _127 = 127,
+
+        _128 = 128,
+
+        _129 = 129,
+
+        _130 = 130,
+
+        _131 = 131,
+
+        _132 = 132,
+
+        _133 = 133,
+
+        _134 = 134,
+
+        _135 = 135,
+
+        _136 = 136,
+
+        _137 = 137,
+
+        _138 = 138,
+
+        _139 = 139,
+
+        _140 = 140,
+
+        _141 = 141,
+
+        _142 = 142,
+
+        _143 = 143,
+
+        _144 = 144,
+
+        _145 = 145,
+
+        _146 = 146,
+
+        _147 = 147,
+
+        _148 = 148,
+
+        _149 = 149,
+
+        _150 = 150,
+
+        _151 = 151,
+
+        _152 = 152,
+
+        _153 = 153,
+
+        _154 = 154,
+
+        _155 = 155,
+
+        _156 = 156,
+
+        _157 = 157,
+
+        _158 = 158,
+
+        _159 = 159,
+
+        _160 = 160,
+
+        _161 = 161,
+
+        _162 = 162,
+
+        _163 = 163,
+
+        _164 = 164,
+
+        _165 = 165,
+
+        _166 = 166,
+
+        _167 = 167,
+
+        _168 = 168,
+
+        _169 = 169,
+
+        _170 = 170,
+
+        _171 = 171,
+
+        _172 = 172,
+
+        _173 = 173,
+
+        _174 = 174,
+
+        _175 = 175,
+
+        _176 = 176,
+
+        _177 = 177,
+
+        _178 = 178,
+
+        _179 = 179,
+
+        _180 = 180,
+
+        _181 = 181,
+
+        _182 = 182,
+
+        _183 = 183,
+
+        _184 = 184,
+
+        _185 = 185,
+
+        _186 = 186,
+
+        _187 = 187,
+
+        _188 = 188,
+
+        _189 = 189,
+
+        _190 = 190,
+
+        _191 = 191,
+
+        _192 = 192,
+
+        _193 = 193,
+
+        _194 = 194,
+
+        _195 = 195,
+
+        _196 = 196,
+
+        _197 = 197,
+
+        _198 = 198,
+
+        _199 = 199,
+
+        _200 = 200,
+
+        _201 = 201,
+
+        _202 = 202,
+
+        _203 = 203,
+
+        _204 = 204,
+
+        _205 = 205,
+
+        _206 = 206,
+
+        _207 = 207,
+
+        _208 = 208,
+
+        _209 = 209,
+
+        _210 = 210,
+
+        _211 = 211,
+
+        _212 = 212,
+
+        _213 = 213,
+
+        _214 = 214,
+
+        _215 = 215,
+
+        _216 = 216,
+
+        _217 = 217,
+
+        _218 = 218,
+
+        _219 = 219,
+
+        _220 = 220,
+
+        _221 = 221,
+
+        _222 = 222,
+
+        _223 = 223,
+
+        _224 = 224,
+
+        _225 = 225,
+
+        _226 = 226,
+
+        _227 = 227,
+
+        _228 = 228,
+
+        _229 = 229,
+
+        _230 = 230,
+
+        _231 = 231,
+
+        _232 = 232,
+
+        _233 = 233,
+
+        _234 = 234,
+
+        _235 = 235,
+
+        _236 = 236,
+
+        _237 = 237,
+
+        _238 = 238,
+
+        _239 = 239,
+
+        _240 = 240,
+
+        _241 = 241,
+
+        _242 = 242,
+
+        _243 = 243,
+
+        _244 = 244,
+
+        _245 = 245,
+
+        _246 = 246,
+
+        _247 = 247,
+
+        _248 = 248,
+
+        _249 = 249,
+
+        _250 = 250,
+
+        _251 = 251,
+
+        _252 = 252,
+
+        _253 = 253,
+
+        _254 = 254,
+
+        _255 = 255,
+
+        _256 = 256,
+
+        _257 = 257,
+
+        _258 = 258,
+
+        _259 = 259,
+
+        _260 = 260,
+
+        _261 = 261,
+
+        _262 = 262,
+
+        _263 = 263,
+
+        _264 = 264,
+
+        _265 = 265,
+
+        _266 = 266,
+
+        _267 = 267,
+
+        _268 = 268,
+
+        _269 = 269,
+
+        _270 = 270,
+
+        _271 = 271,
+
+        _272 = 272,
+
+        _273 = 273,
+
+        _274 = 274,
+
+        _275 = 275,
+
+        _276 = 276,
+
+        _277 = 277,
+
+        _278 = 278,
+
+        _279 = 279,
+
+        _280 = 280,
+
+        _281 = 281,
+
+        _282 = 282,
+
+        _283 = 283,
+
+        _284 = 284,
+
+        _285 = 285,
+
+        _286 = 286,
+
+        _287 = 287,
+
+        _288 = 288,
+
+        _289 = 289,
+
+        _290 = 290,
+
+        _291 = 291,
+
+        _292 = 292,
+
+        _293 = 293,
+
+        _294 = 294,
+
+        _295 = 295,
+
+        _296 = 296,
+
+        _297 = 297,
+
+        _298 = 298,
+
+        _299 = 299,
+
+        _300 = 300,
+
+        _301 = 301,
+
+        _302 = 302,
+
+        _303 = 303,
+
+        _304 = 304,
+
+        _305 = 305,
+
+        _306 = 306,
+
+        _307 = 307,
+
+        _308 = 308,
+
+        _309 = 309,
+
+        _310 = 310,
+
+        _311 = 311,
+
+        _312 = 312,
+
+        _313 = 313,
+
+        _314 = 314,
+
+        _315 = 315,
+
+        _316 = 316,
+
+        _317 = 317,
+
+        _318 = 318,
+
+        _319 = 319,
+
+        _320 = 320,
+
+        _321 = 321,
+
+        _322 = 322,
+
+        _323 = 323,
+
+        _324 = 324,
+
+        _325 = 325,
+
+        _326 = 326,
+
+        _327 = 327,
+
+        _328 = 328,
+
+        _329 = 329,
+
+        _330 = 330,
+
+        _331 = 331,
+
+        _332 = 332,
+
+        _333 = 333,
+
+        _334 = 334,
+
+        _335 = 335,
+
+        _336 = 336,
+
+        _337 = 337,
+
+        _338 = 338,
+
+        _339 = 339,
+
+        _340 = 340,
+
+        _341 = 341,
+
+        _342 = 342,
+
+        _343 = 343,
+
+        _344 = 344,
+
+        _345 = 345,
+
+        _346 = 346,
+
+        _347 = 347,
+
+        _348 = 348,
+
+        _349 = 349,
+
+        _350 = 350,
+
+        _351 = 351,
+
+        _352 = 352,
+
+        _353 = 353,
+
+        _354 = 354,
+
+        _355 = 355,
+
+        _356 = 356,
+
+        _357 = 357,
+
+        _358 = 358,
+
+        _359 = 359,
+
+        _360 = 360,
+
+        _361 = 361,
+
+        _362 = 362,
+
+        _363 = 363,
+
+        _364 = 364,
+
+        _365 = 365,
+
+        _366 = 366,
+
+        _367 = 367,
+
+        _368 = 368,
+
+        _369 = 369,
+
+        _370 = 370,
+
+        _371 = 371,
+
+        _372 = 372,
+
+        _373 = 373,
+
+        _374 = 374,
+
+        _375 = 375,
+
+        _376 = 376,
+
+        _377 = 377,
+
+        _378 = 378,
+
+        _379 = 379,
+
+        _380 = 380,
+
+        _381 = 381,
+
+        _382 = 382,
+
+        _383 = 383,
+
+        _384 = 384,
+
+        _385 = 385,
+
+        _386 = 386,
+
+        _387 = 387,
+
+        _388 = 388,
+
+        _389 = 389,
+
+        _390 = 390,
+
+        _391 = 391,
+
+        _392 = 392,
+
+        _393 = 393,
+
+        _394 = 394,
+
+        _395 = 395,
+
+        _396 = 396,
+
+        _397 = 397,
+
+        _398 = 398,
+
+        _399 = 399,
+
+        _400 = 400,
+
+        _401 = 401,
+
+        _402 = 402,
+
+        _403 = 403,
+
+        _404 = 404,
+
+        _405 = 405,
+
+        _406 = 406,
+
+        _407 = 407,
+
+        _408 = 408,
+
+        _409 = 409,
+
+        _410 = 410,
+
+        _411 = 411,
+
+        _412 = 412,
+
+        _413 = 413,
+
+        _414 = 414,
+
+        _415 = 415,
+
+        _416 = 416,
+
+        _417 = 417,
+
+        _418 = 418,
+
+        _419 = 419,
+
+        _420 = 420,
+
+        _421 = 421,
+
+        _422 = 422,
+
+        _423 = 423,
+
+        _424 = 424,
+
+        _425 = 425,
+
+        _426 = 426,
+
+        _427 = 427,
+
+        _428 = 428,
+
+        _429 = 429,
+
+        _430 = 430,
+
+        _431 = 431,
+
+        _432 = 432,
+
+        _433 = 433,
+
+        _434 = 434,
+
+        _435 = 435,
+
+        _436 = 436,
+
+        _437 = 437,
+
+        _438 = 438,
+
+        _439 = 439,
+
+        _440 = 440,
+
+        _441 = 441,
+
+        _442 = 442,
+
+        _443 = 443,
+
+        _444 = 444,
+
+        _445 = 445,
+
+        _446 = 446,
+
+        _447 = 447,
+
+        _448 = 448,
+
+        _449 = 449,
+
+        _450 = 450,
+
+        _451 = 451,
+
+        _452 = 452,
+
+        _453 = 453,
+
+        _454 = 454,
+
+        _455 = 455,
+
+        _456 = 456,
+
+        _457 = 457,
+
+        _458 = 458,
+
+        _459 = 459,
+
+        _460 = 460,
+
+        _461 = 461,
+
+        _462 = 462,
+
+        _463 = 463,
+
+        _464 = 464,
+
+        _465 = 465,
+
+        _466 = 466,
+
+        _467 = 467,
+
+        _468 = 468,
+
+        _469 = 469,
+
+        _470 = 470,
+
+        _471 = 471,
+
+        _472 = 472,
+
+        _473 = 473,
+
+        _474 = 474,
+
+        _475 = 475,
+
+        _476 = 476,
+
+        _477 = 477,
+
+        _478 = 478,
+
+        _479 = 479,
+
+        _480 = 480,
+
+        _481 = 481,
+
+        _482 = 482,
+
+        _483 = 483,
+
+        _484 = 484,
+
+        _485 = 485,
+
+        _486 = 486,
+
+        _487 = 487,
+
+        _488 = 488,
+
+        _489 = 489,
+
+        _490 = 490,
+
+        _491 = 491,
+
+        _492 = 492,
+
+        _493 = 493,
+
+        _494 = 494,
+
+        _495 = 495,
+
+        _496 = 496,
+
+        _497 = 497,
+
+        _498 = 498,
+
+        _499 = 499,
+
+        _500 = 500,
+
+        _501 = 501,
+
+        _502 = 502,
+
+        _503 = 503,
+
+        _504 = 504,
+
+        _505 = 505,
+
+        _506 = 506,
+
+        _507 = 507,
+
+        _508 = 508,
+
+        _509 = 509,
+
+        _510 = 510,
+
+        _511 = 511,
+
+        _512 = 512,
+
+        _513 = 513,
+
+        _514 = 514,
+
+        _515 = 515,
+
+        _516 = 516,
+
+        _517 = 517,
+
+        _518 = 518,
+
+        _519 = 519,
+
+        _520 = 520,
+
+        _521 = 521,
+
+        _522 = 522,
+
+        _523 = 523,
+
+        _524 = 524,
+
+        _525 = 525,
+
+        _526 = 526,
+
+        _527 = 527,
+
+        _528 = 528,
+
+        _529 = 529,
+
+        _530 = 530,
+
+        _531 = 531,
+
+        _532 = 532,
+
+        _533 = 533,
+
+        _534 = 534,
+
+        _535 = 535,
+
+        _536 = 536,
+
+        _537 = 537,
+
+        _538 = 538,
+
+        _539 = 539,
+
+        _540 = 540,
+
+        _541 = 541,
+
+        _542 = 542,
+
+        _543 = 543,
+
+        _544 = 544,
+
+        _545 = 545,
+
+        _546 = 546,
+
+        _547 = 547,
+
+        _548 = 548,
+
+        _549 = 549,
+
+        _550 = 550,
+
+        _551 = 551,
+
+        _552 = 552,
+
+        _553 = 553,
+
+        _554 = 554,
+
+        _555 = 555,
+
+        _556 = 556,
+
+        _557 = 557,
+
+        _558 = 558,
+
+        _559 = 559,
+
+        _560 = 560,
+
+        _561 = 561,
+
+        _562 = 562,
+
+        _563 = 563,
+
+        _564 = 564,
+
+        _565 = 565,
+
+        _566 = 566,
+
+        _567 = 567,
+
+        _568 = 568,
+
+        _569 = 569,
+
+        _570 = 570,
+
+        _571 = 571,
+
+        _572 = 572,
+
+        _573 = 573,
+
+        _574 = 574,
+
+        _575 = 575,
+
+        _576 = 576,
+
+        _577 = 577,
+
+        _578 = 578,
+
+        _579 = 579,
+
+        _580 = 580,
+
+        _581 = 581,
+
+        _582 = 582,
+
+        _583 = 583,
+
+        _584 = 584,
+
+        _585 = 585,
+
+        _586 = 586,
+
+        _587 = 587,
+
+        _588 = 588,
+
+        _589 = 589,
+
+        _590 = 590,
+
+        _591 = 591,
+
+        _592 = 592,
+
+        _593 = 593,
+
+        _594 = 594,
+
+        _595 = 595,
+
+        _596 = 596,
+
+        _597 = 597,
+
+        _598 = 598,
+
+        _599 = 599,
+
+        _600 = 600,
+
+        _601 = 601,
+
+        _602 = 602,
+
+        _603 = 603,
+
+        _604 = 604,
+
+        _605 = 605,
+
+        _606 = 606,
+
+        _607 = 607,
+
+        _608 = 608,
+
+        _609 = 609,
+
+        _610 = 610,
+
+        _611 = 611,
+
+        _612 = 612,
+
+        _613 = 613,
+
+        _614 = 614,
+
+        _615 = 615,
+
+        _616 = 616,
+
+        _617 = 617,
+
+        _618 = 618,
+
+        _619 = 619,
+
+        _620 = 620,
+
+        _621 = 621,
+
+        _622 = 622,
+
+        _623 = 623,
+
+        _624 = 624,
+
+        _625 = 625,
+
+        _626 = 626,
+
+        _627 = 627,
+
+        _628 = 628,
+
+        _629 = 629,
+
+        _630 = 630,
+
+        _631 = 631,
+
+        _632 = 632,
+
+        _633 = 633,
+
+        _634 = 634,
+
+        _635 = 635,
+
+        _636 = 636,
+
+        _637 = 637,
+
+        _638 = 638,
+
+        _639 = 639,
+
+        _640 = 640,
+
+        _641 = 641,
+
+        _642 = 642,
+
+        _643 = 643,
+
+        _644 = 644,
+
+        _645 = 645,
+
+        _646 = 646,
+
+        _647 = 647,
+
+        _648 = 648,
+
+        _649 = 649,
+
+        _650 = 650,
+
+        _651 = 651,
+
+        _652 = 652,
+
+        _653 = 653,
+
+        _654 = 654,
+
+        _655 = 655,
+
+        _656 = 656,
+
+        _657 = 657,
+
+        _658 = 658,
+
+        _659 = 659,
+
+        _660 = 660,
+
+        _661 = 661,
+
+        _662 = 662,
+
+        _663 = 663,
+
+        _664 = 664,
+
+        _665 = 665,
+
+        _666 = 666,
+
+        _667 = 667,
+
+        _668 = 668,
+
+        _669 = 669,
+
+        _670 = 670,
+
+        _671 = 671,
+
+        _672 = 672,
+
+        _673 = 673,
+
+        _674 = 674,
+
+        _675 = 675,
+
+        _676 = 676,
+
+        _677 = 677,
+
+        _678 = 678,
+
+        _679 = 679,
+
+        _680 = 680,
+
+        _681 = 681,
+
+        _682 = 682,
+
+        _683 = 683,
+
+        _684 = 684,
+
+        _685 = 685,
+
+        _686 = 686,
+
+        _687 = 687,
+
+        _688 = 688,
+
+        _689 = 689,
+
+        _690 = 690,
+
+        _691 = 691,
+
+        _692 = 692,
+
+        _693 = 693,
+
+        _694 = 694,
+
+        _695 = 695,
+
+        _696 = 696,
+
+        _697 = 697,
+
+        _698 = 698,
+
+        _699 = 699,
+
+        _700 = 700,
+
+        _701 = 701,
+
+        _702 = 702,
+
+        _703 = 703,
+
+        _704 = 704,
+
+        _705 = 705,
+
+        _706 = 706,
+
+        _707 = 707,
+
+        _708 = 708,
+
+        _709 = 709,
+
+        _710 = 710,
+
+        _711 = 711,
+
+        _712 = 712,
+
+        _713 = 713,
+
+        _714 = 714,
+
+        _715 = 715,
+
+        _716 = 716,
+
+        _717 = 717,
+
+        _718 = 718,
+
+        _719 = 719,
+
+        _720 = 720,
+
+        _721 = 721,
+
+        _722 = 722,
+
+        _723 = 723,
+
+        _724 = 724,
+
+        _725 = 725,
+
+        _726 = 726,
+
+        _727 = 727,
+
+        _728 = 728,
+
+        _729 = 729,
+
+        _730 = 730,
+
+        _731 = 731,
+
+        _732 = 732,
+
+        _733 = 733,
+
+        _734 = 734,
+
+        _735 = 735,
+
+        _736 = 736,
+
+        _737 = 737,
+
+        _738 = 738,
+
+        _739 = 739,
+
+        _740 = 740,
+
+        _741 = 741,
+
+        _742 = 742,
+
+        _743 = 743,
+
+        _744 = 744,
+
+        _745 = 745,
+
+        _746 = 746,
+
+        _747 = 747,
+
+        _748 = 748,
+
+        _749 = 749,
+
+        _750 = 750,
+
+        _751 = 751,
+
+        _752 = 752,
+
+        _753 = 753,
+
+        _754 = 754,
+
+        _755 = 755,
+
+        _756 = 756,
+
+        _757 = 757,
+
+        _758 = 758,
+
+        _759 = 759,
+
+        _760 = 760,
+
+        _761 = 761,
+
+        _762 = 762,
+
+        _763 = 763,
+
+        _764 = 764,
+
+        _765 = 765,
+
+        _766 = 766,
+
+        _767 = 767,
+
+        _768 = 768,
+
+        _769 = 769,
+
+        _770 = 770,
+
+        _771 = 771,
+
+        _772 = 772,
+
+        _773 = 773,
+
+        _774 = 774,
+
+        _775 = 775,
+
+        _776 = 776,
+
+        _777 = 777,
+
+        _778 = 778,
+
+        _779 = 779,
+
+        _780 = 780,
+
+        _781 = 781,
+
+        _782 = 782,
+
+        _783 = 783,
+
+        _784 = 784,
+
+        _785 = 785,
+
+        _786 = 786,
+
+        _787 = 787,
+
+        _788 = 788,
+
+        _789 = 789,
+
+        _790 = 790,
+
+        _791 = 791,
+
+        _792 = 792,
+
+        _793 = 793,
+
+        _794 = 794,
+
+        _795 = 795,
+
+        _796 = 796,
+
+        _797 = 797,
+
+        _798 = 798,
+
+        _799 = 799,
+
+        _800 = 800,
+
+        _801 = 801,
+
+        _802 = 802,
+
+        _803 = 803,
+
+        _804 = 804,
+
+        _805 = 805,
+
+        _806 = 806,
+
+        _807 = 807,
+
+        _808 = 808,
+
+        _809 = 809,
+
+        _810 = 810,
+
+        _811 = 811,
+
+        _812 = 812,
+
+        _813 = 813,
+
+        _814 = 814,
+
+        _815 = 815,
+
+        _816 = 816,
+
+        _817 = 817,
+
+        _818 = 818,
+
+        _819 = 819,
+
+        _820 = 820,
+
+        _821 = 821,
+
+        _822 = 822,
+
+        _823 = 823,
+
+        _824 = 824,
+
+        _825 = 825,
+
+        _826 = 826,
+
+        _827 = 827,
+
+        _828 = 828,
+
+        _829 = 829,
+
+        _830 = 830,
+
+        _831 = 831,
+
+        _832 = 832,
+
+        _833 = 833,
+
+        _834 = 834,
+
+        _835 = 835,
+
+        _836 = 836,
+
+        _837 = 837,
+
+        _838 = 838,
+
+        _839 = 839,
+
+        _840 = 840,
+
+        _841 = 841,
+
+        _842 = 842,
+
+        _843 = 843,
+
+        _844 = 844,
+
+        _845 = 845,
+
+        _846 = 846,
+
+        _847 = 847,
+
+        _848 = 848,
+
+        _849 = 849,
+
+        _850 = 850,
+
+        _851 = 851,
+
+        _852 = 852,
+
+        _853 = 853,
+
+        _854 = 854,
+
+        _855 = 855,
+
+        _856 = 856,
+
+        _857 = 857,
+
+        _858 = 858,
+
+        _859 = 859,
+
+        _860 = 860,
+
+        _861 = 861,
+
+        _862 = 862,
+
+        _863 = 863,
+
+        _864 = 864,
+
+        _865 = 865,
+
+        _866 = 866,
+
+        _867 = 867,
+
+        _868 = 868,
+
+        _869 = 869,
+
+        _870 = 870,
+
+        _871 = 871,
+
+        _872 = 872,
+
+        _873 = 873,
+
+        _874 = 874,
+
+        _875 = 875,
+
+        _876 = 876,
+
+        _877 = 877,
+
+        _878 = 878,
+
+        _879 = 879,
+
+        _880 = 880,
+
+        _881 = 881,
+
+        _882 = 882,
+
+        _883 = 883,
+
+        _884 = 884,
+
+        _885 = 885,
+
+        _886 = 886,
+
+        _887 = 887,
+
+        _888 = 888,
+
+        _889 = 889,
+
+        _890 = 890,
+
+        _891 = 891,
+
+        _892 = 892,
+
+        _893 = 893,
+
+        _894 = 894,
+
+        _895 = 895,
+
+        _896 = 896,
+
+        _897 = 897,
+
+        _898 = 898,
+
+        _899 = 899,
+
+        _900 = 900,
+
+        _901 = 901,
+
+        _902 = 902,
+
+        _903 = 903,
+
+        _904 = 904,
+
+        _905 = 905,
+
+        _906 = 906,
+
+        _907 = 907,
+
+        _908 = 908,
+
+        _909 = 909,
+
+        _910 = 910,
+
+        _911 = 911,
+
+        _912 = 912,
+
+        _913 = 913,
+
+        _914 = 914,
+
+        _915 = 915,
+
+        _916 = 916,
+
+        _917 = 917,
+
+        _918 = 918,
+
+        _919 = 919,
+
+        _920 = 920,
+
+        _921 = 921,
+
+        _922 = 922,
+
+        _923 = 923,
+
+        _924 = 924,
+
+        _925 = 925,
+
+        _926 = 926,
+
+        _927 = 927,
+
+        _928 = 928,
+
+        _929 = 929,
+
+        _930 = 930,
+
+        _931 = 931,
+
+        _932 = 932,
+
+        _933 = 933,
+
+        _934 = 934,
+
+        _935 = 935,
+
+        _936 = 936,
+
+        _937 = 937,
+
+        _938 = 938,
+
+        _939 = 939,
+
+        _940 = 940,
+
+        _941 = 941,
+
+        _942 = 942,
+
+        _943 = 943,
+
+        _944 = 944,
+
+        _945 = 945,
+
+        _946 = 946,
+
+        _947 = 947,
+
+        _948 = 948,
+
+        _949 = 949,
+
+        _950 = 950,
+
+        _951 = 951,
+
+        _952 = 952,
+
+        _953 = 953,
+
+        _954 = 954,
+
+        _955 = 955,
+
+        _956 = 956,
+
+        _957 = 957,
+
+        _958 = 958,
+
+        _959 = 959,
+
+        _960 = 960,
+
+        _961 = 961,
+
+        _962 = 962,
+
+        _963 = 963,
+
+        _964 = 964,
+
+        _965 = 965,
+
+        _966 = 966,
+
+        _967 = 967,
+
+        _968 = 968,
+
+        _969 = 969,
+
+        _970 = 970,
+
+        _971 = 971,
+
+        _972 = 972,
+
+        _973 = 973,
+
+        _974 = 974,
+
+        _975 = 975,
+
+        _976 = 976,
+
+        _977 = 977,
+
+        _978 = 978,
+
+        _979 = 979,
+
+        _980 = 980,
+
+        _981 = 981,
+
+        _982 = 982,
+
+        _983 = 983,
+
+        _984 = 984,
+
+        _985 = 985,
+
+        _986 = 986,
+
+        _987 = 987,
+
+        _988 = 988,
+
+        _989 = 989,
+
+        _990 = 990,
+
+        _991 = 991,
+
+        _992 = 992,
+
+        _993 = 993,
+
+        _994 = 994,
+
+        _995 = 995,
+
+        _996 = 996,
+
+        _997 = 997,
+
+        _998 = 998,
+
+        _999 = 999,
+
+        _1000 = 1000,
+
+        _1001 = 1001,
+
+        _1002 = 1002,
+
+        _1003 = 1003,
+
+        _1004 = 1004,
+
+        _1005 = 1005,
+
+        _1006 = 1006,
+
+        _1007 = 1007,
+
+        _1008 = 1008,
+
+        _1009 = 1009,
+
+        _1010 = 1010,
+
+        _1011 = 1011,
+
+        _1012 = 1012,
+
+        _1013 = 1013,
+
+        _1014 = 1014,
+
+        _1015 = 1015,
+
+        _1016 = 1016,
+
+        _1017 = 1017,
+
+        _1018 = 1018,
+
+        _1019 = 1019,
+
+        _1020 = 1020,
+
+        _1021 = 1021,
+
+        _1022 = 1022,
+
+        _1023 = 1023,
+
+        _1024 = 1024,
+
+        _1025 = 1025,
+
+        _1026 = 1026,
+
+        _1027 = 1027,
+
+        _1028 = 1028,
+
+        _1029 = 1029,
+
+        _1030 = 1030,
+
+        _1031 = 1031,
+
+        _1032 = 1032,
+
+        _1033 = 1033,
+
+        _1034 = 1034,
+
+        _1035 = 1035,
+
+        _1036 = 1036,
+
+        _1037 = 1037,
+
+        _1038 = 1038,
+
+        _1039 = 1039,
+
+        _1040 = 1040,
+
+        _1041 = 1041,
+
+        _1042 = 1042,
+
+        _1043 = 1043,
+
+        _1044 = 1044,
+
+        _1045 = 1045,
+
+        _1046 = 1046,
+
+        _1047 = 1047,
+
+        _1048 = 1048,
+
+        _1049 = 1049,
+
+        _1050 = 1050,
+
+        _1051 = 1051,
+
+        _1052 = 1052,
+
+        _1053 = 1053,
+
+        _1054 = 1054,
+
+        _1055 = 1055,
+
+        _1056 = 1056,
+
+        _1057 = 1057,
+
+        _1058 = 1058,
+
+        _1059 = 1059,
+
+        _1060 = 1060,
+
+        _1061 = 1061,
+
+        _1062 = 1062,
+
+        _1063 = 1063,
+
+        _1064 = 1064,
+
+        _1065 = 1065,
+
+        _1066 = 1066,
+
+        _1067 = 1067,
+
+        _1068 = 1068,
+
+        _1069 = 1069,
+
+        _1070 = 1070,
+
+        _1071 = 1071,
+
+        _1072 = 1072,
+
+        _1073 = 1073,
+
+        _1074 = 1074,
+
+        _1075 = 1075,
+
+        _1076 = 1076,
+
+        _1077 = 1077,
+
+        _1078 = 1078,
+
+        _1079 = 1079,
+
+        _1080 = 1080,
+
+        _1081 = 1081,
+
+        _1082 = 1082,
+
+        _1083 = 1083,
+
+        _1084 = 1084,
+
+        _1085 = 1085,
+
+        _1086 = 1086,
+
+        _1087 = 1087,
+
+        _1088 = 1088,
+
+        _1089 = 1089,
+
+        _1090 = 1090,
+
+        _1091 = 1091,
+
+        _1092 = 1092,
+
+        _1093 = 1093,
+
+        _1094 = 1094,
+
+        _1095 = 1095,
+
+        _1096 = 1096,
+
+        _1097 = 1097,
+
+        _1098 = 1098,
+
+        _1099 = 1099,
+
+        _1100 = 1100,
+
+        _1101 = 1101,
+
+        _1102 = 1102,
+
+        _1103 = 1103,
+
+        _1104 = 1104,
+
+        _1105 = 1105,
+
+        _1106 = 1106,
+
+        _1107 = 1107,
+
+        _1108 = 1108,
+
+        _1109 = 1109,
+
+        _1110 = 1110,
+
+        _1111 = 1111,
+
+        _1112 = 1112,
+
+        _1113 = 1113,
+
+        _1114 = 1114,
+
+        _1115 = 1115,
+
+        _1116 = 1116,
+
+        _1117 = 1117,
+
+        _1118 = 1118,
+
+        _1119 = 1119,
+
+        _1120 = 1120,
+
+        _1121 = 1121,
+
+        _1122 = 1122,
+
+        _1123 = 1123,
+
+        _1124 = 1124,
+
+        _1125 = 1125,
+
+        _1126 = 1126,
+
+        _1127 = 1127,
+
+        _1128 = 1128,
+
+        _1129 = 1129,
+
+        _1130 = 1130,
+
+        _1131 = 1131,
+
+        _1132 = 1132,
+
+        _1133 = 1133,
+
+        _1134 = 1134,
+
+        _1135 = 1135,
+
+        _1136 = 1136,
+
+        _1137 = 1137,
+
+        _1138 = 1138,
+
+        _1139 = 1139,
+
+        _1140 = 1140,
+
+        _1141 = 1141,
+
+        _1142 = 1142,
+
+        _1143 = 1143,
+
+        _1144 = 1144,
+
+        _1145 = 1145,
+
+        _1146 = 1146,
+
+        _1147 = 1147,
+
+        _1148 = 1148,
+
+        _1149 = 1149,
+
+        _1150 = 1150,
+
+        _1151 = 1151,
+
+        _1152 = 1152,
+
+        _1153 = 1153,
+
+        _1154 = 1154,
+
+        _1155 = 1155,
+
+        _1156 = 1156,
+
+        _1157 = 1157,
+
+        _1158 = 1158,
+
+        _1159 = 1159,
+
+        _1160 = 1160,
+
+        _1161 = 1161,
+
+        _1162 = 1162,
+
+        _1163 = 1163,
+
+        _1164 = 1164,
+
+        _1165 = 1165,
+
+        _1166 = 1166,
+
+        _1167 = 1167,
+
+        _1168 = 1168,
+
+        _1169 = 1169,
+
+        _1170 = 1170,
+
+        _1171 = 1171,
+
+        _1172 = 1172,
+
+        _1173 = 1173,
+
+        _1174 = 1174,
+
+        _1175 = 1175,
+
+        _1176 = 1176,
+
+        _1177 = 1177,
+
+        _1178 = 1178,
+
+        _1179 = 1179,
+
+        _1180 = 1180,
+
+        _1181 = 1181,
+
+        _1182 = 1182,
+
+        _1183 = 1183,
+
+        _1184 = 1184,
+
+        _1185 = 1185,
+
+        _1186 = 1186,
+
+        _1187 = 1187,
+
+        _1188 = 1188,
+
+        _1189 = 1189,
+
+        _1190 = 1190,
+
+        _1191 = 1191,
+
+        _1192 = 1192,
+
+        _1193 = 1193,
+
+        _1194 = 1194,
+
+        _1195 = 1195,
+
+        _1196 = 1196,
+
+        _1197 = 1197,
+
+        _1198 = 1198,
+
+        _1199 = 1199,
+
+        _1200 = 1200,
+
+        _1201 = 1201,
+
+        _1202 = 1202,
+
+        _1203 = 1203,
+
+        _1204 = 1204,
+
+        _1205 = 1205,
+
+        _1206 = 1206,
+
+        _1207 = 1207,
+
+        _1208 = 1208,
+
+        _1209 = 1209,
+
+        _1210 = 1210,
+
+        _1211 = 1211,
+
+        _1212 = 1212,
+
+        _1213 = 1213,
+
+        _1214 = 1214,
+
+        _1215 = 1215,
+
+        _1216 = 1216,
+
+        _1217 = 1217,
+
+        _1218 = 1218,
+
+        _1219 = 1219,
+
+        _1220 = 1220,
+
+        _1221 = 1221,
+
+        _1222 = 1222,
+
+        _1223 = 1223,
+
+        _1224 = 1224,
+
+        _1225 = 1225,
+
+        _1226 = 1226,
+
+        _1227 = 1227,
+
+        _1228 = 1228,
+
+        _1229 = 1229,
+
+        _1230 = 1230,
+
+        _1231 = 1231,
+
+        _1232 = 1232,
+
+        _1233 = 1233,
+
+        _1234 = 1234,
+
+        _1235 = 1235,
+
+        _1236 = 1236,
+
+        _1237 = 1237,
+
+        _1238 = 1238,
+
+        _1239 = 1239,
+
+        _1240 = 1240,
+
+        _1241 = 1241,
+
+        _1242 = 1242,
+
+        _1243 = 1243,
+
+        _1244 = 1244,
+
+        _1245 = 1245,
+
+        _1246 = 1246,
+
+        _1247 = 1247,
+
+        _1248 = 1248,
+
+        _1249 = 1249,
+
+        _1250 = 1250,
+
+        _1251 = 1251,
+
+        _1252 = 1252,
+
+        _1253 = 1253,
+
+        _1254 = 1254,
+
+        _1255 = 1255,
+
+        _1256 = 1256,
+
+        _1257 = 1257,
+
+        _1258 = 1258,
+
+        _1259 = 1259,
+
+        _1260 = 1260,
+
+        _1261 = 1261,
+
+        _1262 = 1262,
+
+        _1263 = 1263,
+
+        _1264 = 1264,
+
+        _1265 = 1265,
+
+        _1266 = 1266,
+
+        _1267 = 1267,
+
+        _1268 = 1268,
+
+        _1269 = 1269,
+
+        _1270 = 1270,
+
+        _1271 = 1271,
+
+        _1272 = 1272,
+
+        _1273 = 1273,
+
+        _1274 = 1274,
+
+        _1275 = 1275,
+
+        _1276 = 1276,
+
+        _1277 = 1277,
+
+        _1278 = 1278,
+
+        _1279 = 1279,
+
+        _1280 = 1280,
+
+        _1281 = 1281,
+
+        _1282 = 1282,
+
+        _1283 = 1283,
+
+        _1284 = 1284,
+
+        _1285 = 1285,
+
+        _1286 = 1286,
+
+        _1287 = 1287,
+
+        _1288 = 1288,
+
+        _1289 = 1289,
+
+        _1290 = 1290,
+
+        _1291 = 1291,
+
+        _1292 = 1292,
+
+        _1293 = 1293,
+
+        _1294 = 1294,
+
+        _1295 = 1295,
+
+        _1296 = 1296,
+
+        _1297 = 1297,
+
+        _1298 = 1298,
+
+        _1299 = 1299,
+
+        _1300 = 1300,
+
+        _1301 = 1301,
+
+        _1302 = 1302,
+
+        _1303 = 1303,
+
+        _1304 = 1304,
+
+        _1305 = 1305,
+
+        _1306 = 1306,
+
+        _1307 = 1307,
+
+        _1308 = 1308,
+
+        _1309 = 1309,
+
+        _1310 = 1310,
+
+        _1311 = 1311,
+
+        _1312 = 1312,
+
+        _1313 = 1313,
+
+        _1314 = 1314,
+
+        _1315 = 1315,
+
+        _1316 = 1316,
+
+        _1317 = 1317,
+
+        _1318 = 1318,
+
+        _1319 = 1319,
+
+        _1320 = 1320,
+
+        _1321 = 1321,
+
+        _1322 = 1322,
+
+        _1323 = 1323,
+
+        _1324 = 1324,
+
+        _1325 = 1325,
+
+        _1326 = 1326,
+
+        _1327 = 1327,
+
+        _1328 = 1328,
+
+        _1329 = 1329,
+
+        _1330 = 1330,
+
+        _1331 = 1331,
+
+        _1332 = 1332,
+
+        _1333 = 1333,
+
+        _1334 = 1334,
+
+        _1335 = 1335,
+
+        _1336 = 1336,
+
+        _1337 = 1337,
+
+        _1338 = 1338,
+
+        _1339 = 1339,
+
+        _1340 = 1340,
+
+        _1341 = 1341,
+
+        _1342 = 1342,
+
+        _1343 = 1343,
+
+        _1344 = 1344,
+
+        _1345 = 1345,
+
+        _1346 = 1346,
+
+        _1347 = 1347,
+
+        _1348 = 1348,
+
+        _1349 = 1349,
+
+        _1350 = 1350,
+
+        _1351 = 1351,
+
+        _1352 = 1352,
+
+        _1353 = 1353,
+
+        _1354 = 1354,
+
+        _1355 = 1355,
+
+        _1356 = 1356,
+
+        _1357 = 1357,
+
+        _1358 = 1358,
+
+        _1359 = 1359,
+
+        _1360 = 1360,
+
+        _1361 = 1361,
+
+        _1362 = 1362,
+
+        _1363 = 1363,
+
+        _1364 = 1364,
+
+        _1365 = 1365,
+
+        _1366 = 1366,
+
+        _1367 = 1367,
+
+        _1368 = 1368,
+
+        _1369 = 1369,
+
+        _1370 = 1370,
+
+        _1371 = 1371,
+
+        _1372 = 1372,
+
+        _1373 = 1373,
+
+        _1374 = 1374,
+
+        _1375 = 1375,
+
+        _1376 = 1376,
+
+        _1377 = 1377,
+
+        _1378 = 1378,
+
+        _1379 = 1379,
+
+        _1380 = 1380,
+
+        _1381 = 1381,
+
+        _1382 = 1382,
+
+        _1383 = 1383,
+
+        _1384 = 1384,
+
+        _1385 = 1385,
+
+        _1386 = 1386,
+
+        _1387 = 1387,
+
+        _1388 = 1388,
+
+        _1389 = 1389,
+
+        _1390 = 1390,
+
+        _1391 = 1391,
+
+        _1392 = 1392,
+
+        _1393 = 1393,
+
+        _1394 = 1394,
+
+        _1395 = 1395,
+
+        _1396 = 1396,
+
+        _1397 = 1397,
+
+        _1398 = 1398,
+
+        _1399 = 1399,
+
+        _1400 = 1400,
+
+        _1401 = 1401,
+
+        _1402 = 1402,
+
+        _1403 = 1403,
+
+        _1404 = 1404,
+
+        _1405 = 1405,
+
+        _1406 = 1406,
+
+        _1407 = 1407,
+
+        _1408 = 1408,
+
+        _1409 = 1409,
+
+        _1410 = 1410,
+
+        _1411 = 1411,
+
+        _1412 = 1412,
+
+        _1413 = 1413,
+
+        _1414 = 1414,
+
+        _1415 = 1415,
+
+        _1416 = 1416,
+
+        _1417 = 1417,
+
+        _1418 = 1418,
+
+        _1419 = 1419,
+
+        _1420 = 1420,
+
+        _1421 = 1421,
+
+        _1422 = 1422,
+
+        _1423 = 1423,
+
+        _1424 = 1424,
+
+        _1425 = 1425,
+
+        _1426 = 1426,
+
+        _1427 = 1427,
+
+        _1428 = 1428,
+
+        _1429 = 1429,
+
+        _1430 = 1430,
+
+        _1431 = 1431,
+
+        _1432 = 1432,
+
+        _1433 = 1433,
+
+        _1434 = 1434,
+
+        _1435 = 1435,
+
+        _1436 = 1436,
+
+        _1437 = 1437,
+
+    }
+
+    [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "9.11.0.0 (Newtonsoft.Json v9.0.0.0)")]
+    public enum SchemaTag
+    {
+        _0 = 0,
+
+        _1 = 1,
+
+        _2 = 2,
+
+        _3 = 3,
+
+        _4 = 4,
+
+        _5 = 5,
+
+        _6 = 6,
+
+        _7 = 7,
+
+        _8 = 8,
+
+        _9 = 9,
+
+        _10 = 10,
+
+        _11 = 11,
+
+        _12 = 12,
+
+        _13 = 13,
+
+        _14 = 14,
 
     }
 

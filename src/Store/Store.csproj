@@ -17,7 +17,7 @@
     <AssemblyName>PDS.WITSMLstudio.Store</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <MvcBuildViews>false</MvcBuildViews>
-    <UseIISExpress>false</UseIISExpress>
+    <UseIISExpress>true</UseIISExpress>
     <IISExpressSSLPort />
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
@@ -218,6 +218,7 @@
     <Compile Include="..\External\GlobalAssemblyInfo.cs">
       <Link>GlobalAssemblyInfo.cs</Link>
     </Compile>
+    <Compile Include="AllowAllMemberShipProvider.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\EtpController.cs" />
@@ -302,6 +303,10 @@
     <ProjectReference Include="..\Store.Notifications\Store.Notifications.csproj">
       <Project>{987b6304-b4a6-4d57-acc3-7209175286a6}</Project>
       <Name>Store.Notifications</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Store.PRODML\Store.PRODML.csproj">
+      <Project>{487631a9-6f77-4221-a919-60844202c9dd}</Project>
+      <Name>Store.PRODML</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

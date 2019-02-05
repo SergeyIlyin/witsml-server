@@ -11,7 +11,7 @@ namespace PDS.WITSMLstudio.Store.Data.Reports
 {
     [Export(typeof(IEtpDataProvider))]
     [Export(typeof(IEtpDataProvider<Report>))]
-    [Export200("WellTest", typeof(IEtpDataProvider))]
+    [Export200(nameof(Report), typeof(IEtpDataProvider))]
     [PartCreationPolicy(CreationPolicy.Shared)]
     public class Report200DataProvider : ProdmlEtpDataProvider<Report>
     {
